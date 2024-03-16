@@ -1,0 +1,808 @@
+Introdução ao python
+
+História: O python foi criada por Guido van rossum.É uma linguagem de alto nivel e código aberto. De facil legibilidade, amplamente usada, para ciências de dados, automação etc.
+
+Sintaxe
+
+O py usa a indentação para definir seus blocos de códigos, diferente de algumas outras longuagens que usam chaves. Não há a necessidade de declarar variaveis, pois a sua tipagem é dinâmica(fracamente tipada) variavel São usadas para armazenar dados ex--- nome = "pedro"
+
+Conversão de tipos As funções int(), float(), str() etc convertem, exemplo; text = "120" num = 87 print(int(text)+num)
+
+slicing permite obter partes de uma string, começa em 0 sempre. ex frase = "dia lindo" print(frase[0:1]) ---> "di" operador in usado para verificar se um valor esta em uma sequencia, resultado em booleano texto = " olá, como você está?" print('como' in texto) # True
+
+Operador is para verificar se duas variaveis se referem ao mesma posição na memoria x =[1,2,3] y = x print(x is y) ---> True
+-------------------------------------------------------------------------------------------------------------------------------------------------
+frutas = ['tomate','maçã','morango','banana','melão']
+frutas.append('pimenta')
+print(frutas)
+----------------------------------------------------------------------------------------------------------------------------
+#.append() vai adicionar um valor ao final da lista
+listNum = [75, 93, 25, 17, 42]
+listNum.append(55)
+
+print(listNum)
+----------------------------------------------------------------------------------------------------------------------------
+fruits = ['orange', 'apple', 'pear', 'banana', 'kiwi', 'apple', 'banana']
+fruits.count('apple')
+----------------------------------------------------------------------------------------------------------------------------
+L1 = [2, 3, 8, 10]
+L2 = [1, 0, 56, 29]
+L3 = L1 + L2
+
+print(L3)
+---------------------
+L1 = [2, 3, 8, 10]
+L2 = L1
+L2[1] = 5
+L2[2] = 5
+print( L1 )
+----------------------------------------------------------------------------------------------------------------------------
+
+fruits = ['orange', 'apple', 'pear', 'banana', 'kiwi', 'apple', 'banana']
+#fruits.count('apple')
+#fruits.count('tangerine')
+#fruits.index('banana')
+#fruits.index('banana', 4)
+fruits.append('grape')
+print(fruits.append('grape'))
+-----------------------------------------------------------------------------------------------------------------------------
+
+# meteu 85 na posicçao 2 diferente de eu colocar listNum [2] = 85 que vai substituir
+listNum = [75, 93, 25, 17, 42, 93, 93]
+listNum.insert(2, 85)
+len(listNum)
+
+print(" O tamanho da lista é", len(listNum)) # tamanho da lista
+print(listNum)
+
+print("o elemento 93 se repete", listNum.count(93), "vezes") # quantos elementos daquele tem na lista
+
+-------------------------------------------------------------------------------------------------------------------
+#.remove vai remover da lista o elemento selecionado
+listNum = [75, 93, 25, 17, 42]
+listNum.remove(75)
+
+print(listNum)
+------------------------------------------------------------------------------------------------------------------------
+x = 2
+x *= 5
+print(x)
+
+
+#função lambdaA função lambda em Python é uma maneira de criar funções anônimas e de uma única expressão. Ela é útil em situações onde você precisa de uma função temporária e simples, e não quer definir uma função completa usando a palavra-chave def.
+#A sintaxe básica de uma função lambda é:
+#lambda arguments: expression
+
+add = lambda x, y: x + y
+print(add(3, 5))  # Output: 8
+
+#Neste exemplo, lambda x, y: x + y cria uma função que aceita dois argumentos x e y, e retorna a soma deles. Essa função é então atribuída à variável add.
+#As funções lambda são frequentemente utilizadas como argumentos de funções de ordem superior, como map(), filter(), sorted(), entre outras, onde você pode precisar de uma função rápida e simples sem definir uma função separada.
+
+# Exemplo de uso de lambda com map()
+numbers = [1, 2, 3, 4, 5]
+squared = map(lambda x: x**2, numbers)
+print(list(squared))  # Output: [1, 4, 9, 16, 25]
+#Embora as funções lambda possam ser úteis em certas situações, é importante notar que elas são limitadas a expressões simples. Se você precisar de uma função mais complexa, é melhor usar a declaração def para definir uma função nomeada.
+----------------------------------------------------------------------------------------------------------------------------------
+#Numpy é uma biblioteca do py para o processamento cientifico de dados
+#fornece uma estrutura de dados chamada array NumPy qu armazenam dados de forma eficientes
+#realizam operações: matemática, estatisticas e visualização de dados
+#é uma estrutura base para o suporte a outras bibliotecas
+#criam arrays multi ou unidimensional
+
+#import numpy as np
+#data = np.array([1,2,3,4,5,6,7])
+
+#matriz 3x3
+
+#matriz = np.array([[2,2,3],[3,4,5],[6,7,2]])
+#matriz
+
+#matriz zeros
+#zeros = np.array((3, 3))
+#zero
+
+#como criar matrizes zeros ou uns ou indentidade(eye)?
+#zeros = np.array((3, 3))
+#uns = np.ones(10)
+#indentidade = np.eye(5)
+#
+#como criar uma sequencia de numeros?
+#dados = np.arange(13)
+#dados
+
+#sequencia em
+
+
+
+
+
+#no jupyter**
+#instalalar o ipykernel
+--------------------------------------------------------------------------------------------------------------------------------
+#solicita dos numeros e mostra a media
+numero_1 = input("Digite o primeiro numero:")
+numero_2 = input("Digite o segundo  numero: ")
+
+resultado = numero_1 + numero_2
+
+print(resultado)
+--------------------------------------------------------------------------------------------------------------------------
+lista = [1,2,3,4,5,5]
+lista.remove(5)
+print(lista)
+-------------------------
+x =2
+y = 2
+
+resultado= x*y
+print(resultado)
+-----------------------------------------------------------------------------------------------------------------------------
+#Funções: blocos de códigos que permitem agrupar conjuntos de instruções que podem ser chamadas quando necessario
+#tipos de funções:
+#Funções nativas: já existente no python, que fornecem ferramentas para trabalhar com operações logicas, matemáticas, texto etc
+#Funções de biblioteca: são criações pre definidas disponiveis no python .
+#Funções personalizadas criadas prlo programador
+
+#parâmentros: funções presentes no python, que permitem realizar operações logicas, matemáticas, texto etc
+#argumentos: funçoes pre-desenvolvidas disponiveis disponiveis na biblioteca python, para uso diversos
+
+#ESCOPO DE VARIAVEIS
+#escopo local: so podem ser acessadas dentro desta função
+#escopo global; podem ser acessadas de qualquer lugar do código
+
+# a palavra reservada "def" significa definição de função
+def soma(a, b): # recebe dois parametos e retorna um valor
+    resultado = a+b # vai dá um resultado, porém só vai funcionar dentro do escopo da variavel, não vou ter retorno fora dela, resultado é uma variavel de escopo local, usa o retorno pra isso.
+    return resultado
+print(soma(5,10))
+soma_lados= soma(40,49)
+print(soma_lados) #repare que agora eu posso fazer varias soma, já que soma é global agora
+
+
+#nome = "global" essa funcao seria global, da pra acessar em todo o codigo, ate dentro do escopo local
+def soma_multiplica(valor1,valor2, operacao): #escopo local
+    if operacao == "somar":#escopo local
+       resultado = valor1+valor2#escopo local
+    if operacao == "multiplicar":#escopo local
+       resultado =valor1 * valor2  #escopo local
+    return resultado
+
+valor_1 = float(input("informe o valor 1: "))     #escopo global
+valor_2 = float(input("informe o valor 2: "))     #escopo global
+opcao = (input("qual a operação: "))     #escopo global
+resultado = soma_multiplica(valor_1,valor_2, opcao)   #escopo global
+print(resultado)
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#orientação a objeto
+
+#para o python um objeto é qualquer coisa que armazena um valor, nas lingu não orientadas a objetos variavel é só uma posição de valor
+#um objeto é utilizado para atribuir coisas, por exemplo: uma pessoa tem; nome, idade, etc
+#classe; usada para agrupar e descrever um tipo
+#instancia é um objeto cujo o tipo é uma classe,
+
+#__init__ função contrutora do py
+class Pessoa():
+    def __init__(self, nome, idade, sexo):#metodo inicializador, usado para passar o estado e os atributos para a classe, o metodo é um função, so que encapsulada só funciona a classe, a funçao não
+      self.nome = nome
+      self.idade = idade
+      self.sexo = sexo
+    def saudacao(self):
+      print(f"meu nome é {self.nome} e tenho {self.idade} anos")
+
+class Professor(Pessoa):  # assim a classe professor vai herdar da classe pessoa
+    def __init__(self, nome, idade,sexo, titulo):  # titulo por ser uma classe de pessoa diferente
+        super().__init__(nome, idade, sexo)  # chama o construtor da classe Pessoa
+        self.titulo = titulo
+
+    def info(self):  # o self vai ser responsavel por pegar os atributos e jogar no metodo
+        print(f"O titulo é{self.titulo}")
+
+prof_1 = Professor("lauro","27","masculino","dr")
+print(prof_1.nome)
+print(prof_1.info())
+print(prof_1.saudacao())
+
+pessoa1 = Pessoa("lara","23","femenino") # objeto
+pessoa2 = Pessoa("theus","23","masculino")
+pessoa3 = Pessoa("Arnaldo","25","masculino")
+
+pessoa1.saudacao()
+pessoa2.saudacao()
+pessoa3.saudacao()
+
+print(pessoa1.nome)# acessando o atributo nome
+
+#Herança: é quando uma classe herda atributos e metodos de outras classes
+-------------------------------------------------------------------------------------------------------------------------------
+#herança:
+#Exerc: sitema de gerenciamneto de de bilblioteca. crie classe para livro, autor e usuario. Permita emprestimo, devolução e busca de livros
+
+class Autor():
+    def __init__(self,nome):
+       self.nome = nome
+
+class Livro():
+    def __init__(self, titulo, autor):
+       self.titulo = titulo
+       self.autor = autor
+       self.emprestado = False
+
+    def emprestar(self,):
+      if self.emprestado == False:
+         self.emprestado = True
+      else:
+         print("livro já emprestado")
+
+    def devolver(self,):
+      if self.emprestado == True:
+        self.emprestado = False
+      else:
+        print("O livro foi devolvido")
+
+
+class Usuario():
+     def __init__(self,login):
+       self.login = login
+
+autor_1 = Autor("theus")
+livro_1 = Livro("A história de ", autor_1) # colocando uma classe dentor de outra, por que classe é um tipo de dados
+
+livro_1.emprestar()
+print(livro_1.autor)
+print(livro_1.titulo)
+print(livro_1.emprestado)
+livro_1.emprestar()
+-------------------------------------------------------------------------------------------------------
+#Leitura e escrita de arquivos
+#
+# Abrir  arquivo=open('exemplo.txt', 'r') o random aponta para um objeto, modo leitura
+arquivo = open("exemplo.txt","w")#criando
+arquivo.write("Matheus sofre com o python")
+arquivo = open("exemplo.txt","r")# ler o que ta dentro
+conteudo = arquivo.read()
+print(conteudo)
+arquivo.close()
+
+arquivo = open("exemplo.txt","w")#abrindo em modo de escrita, w subescreve, vai apagar seu arquivo, na segunda debug ele consta esse conteudo
+arquivo.write("Py é Python")#mudando o que ta dentro
+arquivo = open("exemplo.txt","r")
+conteudo = arquivo.read()
+print(conteudo)
+arquivo.close()
+
+arquivo = open("exemplo.txt","a")# vai adicionar um novo conteudo
+arquivo.write("Py é foda \n")
+arquivo.close()
+
+#Fechar  arquivo.close()
+#
+#Ler     conteudo = arquivo.read()
+#
+#Escrever  arquivo = open('exemplo.txt','w') vai escrever o arquivo, se não existir vai criar um novo, cuidado, se tu usar a 'w'em um arquivo q ja existe, ele vai apagar o que ta la e subescrever
+#          arquivo.write("Escrevendo.\n")
+#
+#          arquivo = open('exemplo.txt',''a') vai pegar um arquivo que já exite e escrever nele,
+#          arquivo.write("Escrevendo.\n")
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#Banco de dados-CRUD
+#banco de dados uma coleçao de dados organizados, b. relacional em tambelas
+#CRUD é um acronimo para CREAD, READ, UPDATE, DELETE
+#CREAD criar, instrução-insert para adicionar dados
+#READ Ler-instrução select para recuperar dados do banco de dados
+#UPDATE atualizar- update para modificar
+# DELETE para deletar
+
+#SqLite, da pra usar no python, import
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+class Livro():
+    def __init__(self, titulo, autor):
+        self.titulo = titulo
+        self.autor = autor
+    def infor(self):
+      print(f"o nome do livro é: {self.titulo} e o autor é: {self.autor}")
+
+
+livro_1 = Livro("Um fulano", "matheus")
+livro_2 = Livro("UM campo de choro", "Theus")
+
+livro_1.infor()
+livro_2.infor()
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+class ContaBancaria():
+    def __init__(self, valor_inicial):
+      self.saldo = valor_inicial
+
+    def sacar(self, valor):
+      if valor > self.saldo:
+         print("saldo insuficiente")
+      else:
+         #self.saldo = self.saldo - valor
+         self.saldo -= valor
+         print("valor sacado com sucesso")
+
+    def deposita(self, valor):
+         self.saldo  = self.saldo + valor
+         print("Deposito ok!")
+
+    def verificar_saldo(self):
+        print(f"o saldo da conta é {self.saldo}")
+
+conta1 = ContaBancaria(1000)
+conta1.deposita(500)
+conta1.sacar(300)
+conta1.verificar_saldo()
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+#Strings: sequência de caracteres que podem incluir letras, números, epaços e simbolos. São imutáveis, ordenadas e indexáveis.
+#frase = "python é incrivel"
+#print( frase* 3 )#vai imprimir 3 x a frase
+
+
+#primeiro_nome = "matheus"
+#sobrenome = " amorim"
+#print("meu nome é " + primeiro_nome + " e meu sobrenome é "+ sobrenome)
+
+#ou
+primeiro_nome = "matheus"
+sobrenome = " amorim"
+nome_completo = primeiro_nome + sobrenome
+print(nome_completo)
+
+primeiro_nome = "matheus"
+sobrenome = " amorim"
+nome_completo = primeiro_nome + sobrenome
+nome = nome_completo[0:7:2] #jumper
+print(nome)
+
+#métodos
+#find() localiza o primeiro índice da substring em uma string
+frase = "python é incrivel"
+print(frase.find("inc"))
+
+#upper() e lower() converte uma string para maiúscula ou minúscula
+frase = "PYthon é incrivel"
+print(frase.lower())
+
+frase = "python"
+print(frase.upper())
+
+#replace() substitui caracteres
+frase = "python é incrivel"
+print(frase.replace(" ","---"))# substitui espaço vazio por ---
+------------------------------------------------------------------------------------------------------------------------------------------------------
+#Bem, se vc não colocar a droga da função int() vai dá erro *
+#Exercicio:
+valor1 = input("Digite o 1º valor ")
+valor2 = input("Digite o 2º valor ")
+
+valor1 = int(valor1) #*
+valor2 = int(valor2) #*
+
+print(valor1 + valor2)
+print(valor1 - valor2)
+print(valor1 * valor2)
+print(valor1 % valor2)
+------------------------------------------------------------------------------------------------------------------------------------------------------
+#Esse programa vai calcular o preço total de uma compra. Vai solicitar ao usuario o valor de cada item e vai calcular + impostos
+#Exercicio
+total = 0
+imposto = 0.1 #10%
+
+while True:
+      valor_item = input("Digite o valor do item ou S para sair. ")
+      if valor_item == 's':
+         break
+      total = total+float(valor_item)
+
+total = total*imposto + total
+print("O valor do item é: ", total)
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+#listas python: são coleção de itens que podem ser de diferentes tipos, criadas por [ e, separadas, por ,]
+#usadas para armazenamentos de dados
+
+lista_nomes = ["rogerio","marcos","pedro"]
+lista_frutas = ["banana","maça","laranja","uva","manga"]
+print(len(lista_frutas)) #para saber a quantidade de itens na lista
+print(sorted(lista_frutas)) #funçao nativa do python para organizar as listas em ordem alfabetica
+lista_frutas.reverse() # essse metodo vai invester a lista
+print(lista_frutas)
+
+# lista_frutas[3]  buscando um item na lista, diretamente
+# print(lista_frutas[4])
+
+#slice
+#print(lista_frutas[0:1])#o ultimo elemento não entra
+
+#adicionar indice a lista   #metodo para remover lista_frutas2.remove("") ou del.lista_frutas("")
+lista_frutas = ["banana","maça","laranja","uva","manga"]
+lista_frutas = lista_frutas + ["tangerina"]
+print(lista_frutas)
+
+#outra maneiras, usando o metodo append
+lista_frutas2 = ["goiaba","tomate","caju"]
+lista_frutas2.append("kiwi")
+print(lista_frutas2)
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#O programa vai solicitar ao usuario que adivinhe um número entre 1 e 50, o programa vai dizer ao usuario se o número é maior ou menor e solicitar novas tentativas ate acertar
+#Exercicio
+
+numero_a_ser_adivinhado =  20
+while True:# esse comando vai deixar o programa rodando infinitamente
+      palpite = int(input("Seu palpite: "))
+      if numero_a_ser_adivinhado == palpite:
+          print("Acertou!")
+          break# funçao que faz sair do laço
+      if palpite > numero_a_ser_adivinhado:
+          print("o numero digitado é menor que o que voçe digitou, tente novamente: ")
+      else:
+          print("o numero digitado é maior que o que voçe digitou, tente novamente: ")
+------------------------------------------------------------------------------------------------------------------------------------------------------
+#programa contagem regressiva de 0 a dez com o comando while
+#Exercicio
+contador = 0
+while contador < 10:
+      print(contador)
+      contador += 1
+
+#Agora em ordem decrescente
+numero_total = 10
+while(numero_total >=0):
+    print(numero_total)
+    numero_total = numero_total -1
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+#Desvio condicional
+#exercicio fila prioritaria
+x = 23
+if x > 0:
+  print("x é positivo")
+
+else:
+  print("x é negativo")
+
+print("fim!")
+
+#--------------------------
+idade = 70
+if idade < 3 or idade > 60:
+   print("fila prioritaria")
+else:
+   print("fila regular")
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+#-------------------------- do meu jeito
+
+x = input("Digite uma idade ")
+
+x = int(x)
+
+if x < 12:
+  print("vc é uma criança")
+
+elif x < 18:
+  print("vc adolescente")
+
+elif x < 60:
+  print("vc adulto")
+
+elif x < 300:
+  print("vc é idoso")
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+#lembre que a condiçao input retorna um valor str, então necessita a conversão
+#exercicio calcular os dados de um usuario para retirar sangue
+idade = int(input("Sua idade: "))
+peso =  int(input("Seu peso: "))
+quantidade_de_horas_dormidas_na_noite_passada = int(input("Quantas horas dormiu: "))
+
+if (idade > 16) and(idade < 59) and(peso > 50) and(quantidade_de_horas_dormidas_na_noite_passada >= 6):
+          print("paciente pode doar sangue")
+else:
+          print("não pode doar sangue")
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+#funçoes do print
+
+print("unica linha")
+print("o end no final faz o proximo print continuar na mesma linha", end="")
+print( " continua")
+
+
+nome = "esté é mario"
+print("olá",nome)
+
+nome = 'matheus'
+idade = 22
+
+print('olá o nome dele é {0} e ele tem {1} anos'.format(nome,idade))
+
+
+#f-string
+nome = "fabio"
+idade =34
+msg = f"Ele se chama {nome}, e tem {idade}"
+print(msg)
+
+valor = 123.45744444444444444444444444444444
+print(f"o valor é {valor:.2f}")# só exibe duas casa decimais
+
+#caracter de escap \
+#valor = 123.45744444444444444444444444444444
+#print(f"o valor é \'{valor:.2f}\'") vai entedender que tem de printar entre aspas, exemplo tambem é o \nn\
+
+#tabulação
+nome = 'páulo'
+idade = 23
+
+print(f"nome:\t{nome}\tidade:\t{idade}")
+---------------------------------------------------------------------------------------------------------------------------------
+# Importando as bibliotecas necessárias
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error
+import numpy as np
+
+# Gerando dados fictícios para exemplificar o aprendizado
+np.random.seed(42)
+X = 2 * np.random.rand(100, 1)
+y = 4 + 3 * X + np.random.randn(100, 1)
+
+# Dividindo os dados em conjuntos de treinamento e teste
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Criando um modelo de regressão linear
+model = LinearRegression()
+
+# Treinando o modelo com os dados de treinamento
+model.fit(X_train, y_train)
+
+# Fazendo previsões com o conjunto de teste
+y_pred = model.predict(X_test)
+
+# Avaliando o desempenho do modelo
+mse = mean_squared_error(y_test, y_pred)
+print(f'Mean Squared Error: {mse}')
+
+# Agora, você pode usar o modelo treinado para fazer previsões em novos dados
+new_data_point = np.array([[2.0]])  # Exemplo de novo dado
+prediction = model.predict(new_data_point)
+print(f'Prediction for new data point: {prediction}')
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+# Definir uma função que recebe uma lista ordenada e um elemento a ser procurado
+def busca_binaria(lista, elemento):
+  # Inicializar os índices inferior e superior da lista
+  inferior = 0
+  superior = len(lista) - 1
+  # Enquanto o índice inferior for menor ou igual ao índice superior
+  while inferior <= superior:
+    # Calcular o índice do meio da lista
+    meio = (inferior + superior) // 2
+    # Se o elemento for igual ao valor do meio, retornar o índice do meio
+    if elemento == lista[meio]:
+      return meio
+    # Se o elemento for menor que o valor do meio, atualizar o índice superior para o meio - 1
+    elif elemento < lista[meio]:
+      superior = meio - 1
+    # Se o elemento for maior que o valor do meio, atualizar o índice inferior para o meio + 1
+    else:
+      inferior = meio + 1
+  # Se o elemento não for encontrado, retornar -1
+  return -1
+
+# Testar a função com uma lista de números e um elemento a ser procurado
+lista = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
+elemento = 13
+# Chamar a função e imprimir o resultado
+resultado = busca_binaria(lista, elemento)
+print(f"O elemento {elemento} está no índice {resultado} da lista.")
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+#loops: while, vai continuar até uma condição ser satisfeita. Se atente a indentação!
+#exercicio
+numero = 2
+
+while(numero < 10):# ao chegar nessa condição ele sai.
+  numero = int(input("Digite um numero: "))
+  if (numero % 2 == 0):
+    print("o numero: " + str(numero) + " e par")
+  else:
+    print("o numero: " + str(numero) + " e impar")
+
+print("Fim")
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+# ja o for vai rodar ate acabar os itens da lista
+#for i in range(1, 3, 6):
+numero = 2
+for i in range(7, 8, 9):
+  numero = int(input("Digite um numero: "))
+  if (numero % 2 == 0):
+    print("o numero: " + str(numero)+ " e par")
+  else:
+    print("o numero: " + str(numero) + " e impar")
+
+print("Fim")
+------------------------------------------------------------------------------------------------------------------------------------------------------
+#comentario em linha um jogo da velha
+"""comentario
+em bloco aspas"""
+
+#--------------------------------------------------------------------------------------------------------------------#
+
+#indentação : em python é feita pela quantidade de espaços, ele endende que * esta dento do bloco if e else
+#x = -23
+#if x > 0:
+  #print("x é positivo")*
+
+#else:
+ # print("x é negativo")  *
+
+ #-------------------------------------------------------------------------------------------------
+# a variavel str tranforma algum numero em texto.
+# a função "input" serve para ler um dado fornnecido pelo usuario uma caixinha aparece.
+#--------------------------------------------------------------------------------------------------------------------#
+#NUMEROS#
+
+#int - inteiros = ...-3,-2,-1,0,1,2,3...
+
+#float -numeros de ponto flutuantes, os positivos e os negativos, bem como os que possuem casas decimais -3,3.3,-2,4,7,..1.
+
+#complex - numeros complexos 1 + 2j
+#--------------------------------------------------------------------------------------------------------------------#
+
+#VARIAVEIS#
+#o python difere as mesmas variaveis escritas de forma diferente, mauiscula minuscula = altura, Altura, ALTURA
+#de A-Z, 0-9
+
+x = 5 , #x recebe 5
+y = 3.5 , #y recebe 3.5
+z = 1+2j #complex
+#h, j , m = 2, 4, 5
+h, j , m = 2, 4, 5
+print(h)
+print(j)
+print(m)
+
+#a variavel pode receber nomes tambem
+w = 'ana'
+print(w)
+#variaveis diferentes podem receber o mesmo valor
+a = b = c = 'python'
+print(a)
+print(b)
+print(c)
+
+#somando diferentes variaveis
+x = w + a
+print(x)
+x = m + j
+print(x)
+#x = w + m # não vai, pois o python não junta um nome com um numero int. por ser uma linguagem com uma tipagem dinamica]
+
+#--------------------------------------------------------------------------------------------------------------------#
+##metodos estrings## strings = texto
+
+b = "  OLA mundo   "
+print(b.strip()) #vai ignorar o espaco
+
+b = "  OLA mundo   "
+print(b)
+
+v = "OLA MUNDO" #vai ficar tudo em minusculo
+print(v.lower())
+
+m = "ola mundo"
+print(m.upper()) #vai deixar em maiusculo
+
+##concatenação Strings##
+j = "ola"
+d = " mundo"
+l = j+d #l = j + "" + d  , assim tambem vai
+print(l)
+
+#--------------------------------------------------------------------------------------------------------------------#
+#Type(descobrir o tipo de dados armazenados na variavel )
+i = "ola mundo"
+o = 5
+y = 6.
+s = 1+7j
+
+print(type(i))
+print(type(o))
+print(type(y))
+print(type(s))
+
+#--------------------------------------------------------------------------------------------------------------------#
+#CASTING# converte tipos de dados numericos e de textos para outros dados numericos e de textos
+#int
+x = int(2)
+w = int(2.8)
+t = int('2')
+print( x , w , t )# acaba que perdendo um pouco da precição, não é algo ruim em alguns casos
+#float
+a = float(2.3)
+b = float(2)
+c = float('2.3')
+d = float('2')
+print( a , b , c , d)# todos recebem casas decimias agora
+
+#strings
+p = 'sl'
+r =  2
+n = 2.3
+print("a vriavel p e do tipo:",type(p))
+print("a vriavel r e do tipo:",type(r))
+print("a vriavel n e do tipo:",type(n))
+
+#converçao
+p =  str('sl')
+r =  str(2)
+n =  str (2.3)
+print("a vriavel p e do tipo:",type(p))
+print("a vriavel r e do tipo:",type(r))
+print("a vriavel n e do tipo:",type(n))
+#--------------------------------------------------------------------------------------------------------------------#
+#função ABS: vai retonar um número absoluto;
+print(abs(-15))
+
+#função pow: é a abreviação de power e serve para fazer a exponenciação
+print(pow(3,3))
+
+#função max e min:dentre uma sequência de números, essas funçoes irão retornar o maior e o menor número.
+#Arredondamento:
+#floor(x) #Retorna o maior inteiro menor ou igual a x.
+#ceil(x) #Retorna o menor inteiro maior ou igual a x.
+
+#Raízes e logaritmos:
+#sqrt(x) # Retorna a raiz quadrada de x.
+#log(x) # Retorna o logaritmo natural de x. Com dois argumentos, é possível especificar a base do logaritmo.
+
+#Trigonometria:
+#sin(x) #Retorna o seno de x em radianos.
+#asin(x) #Retorna o arcseno de x em radianos.
+#print(max(2,44,66,8))
+#print(min(2,44,66,8))
+
+#print(round(7,9)) #(!)
+
+#função round: arredonda para o número mais proximo
+#para usar outras funções de matemática é necessario importar a biblioteca: import.math
+#print(math.floor()): arredondamento para baixo;
+#print(math.ceil()): arredondamento para cima;
+#print(math.sqrt()): função de raiz
+#--------------------------------------------------------------------------------------------------------------------#
+#Manipulação de Variáveis
+# Operações Matemáticas, Operações Matemáticas e Aritméticas:
+x = 55
+y = 8
+soma = x + y
+subtracao = x - y
+multiplicacao = x * y
+divisao = x / y
+resto = x % y
+potencia = x ** y
+print("Soma:", soma)
+print("Subtração:", subtracao)
+print("Multiplicação:", multiplicacao)
+print("Divisão:", divisao)
+print("Resto:", resto)
+print("Potência:", potencia)
+------------------------------------------------------------------------------------------------------------------------------------------------------
+#Tuplas, dicionários e sets
+dias_da_semana = ("segunda","terça","quarta")
+print(type(dias_da_semana))
+#TUPLAS: são listas imutaveis, não permite alteração, nas listas sim. Como dias da semana, coordenada geograficas e contatos de pessoas
+#DICIONÁRIOS: são estruturas de dados em python que armazenam elementos como pares chave-valor. Cada chave e associada a um valor
+#podem usados para armazenar informações de pessoas, produtos ou objetos de qualquer tipos
+#_______________________
+#|KEY--------|-----value|
+#|firstName  |     Bugs |
+#|lastName   |     Bunny|
+#|location   |     Erth |
+#|___________|__________|
+pessoa = {"nome":"matheus", "idade": 22}
+pessoa["peso"]= 76 # assim eu consigo adicionar novas coisas ao meu dic
+print(type(pessoa))
+print(pessoa["nome"]) # acessando um valor atribuido a uma chave
+print(pessoa.keys())
+print(pessoa.items())
+print(pessoa.values())
+#SETS: estruturas de dados em python que representam conjuntos matemáticos. Eles contêm elementos unicos e não mantêm nenhuma ordem específica
+#são frequentementes utilizados para remover duplicatas de uma lista ou para fazer operações matemáticas como união ou interseção
+conjunto= {"branco","roxo","preto"}
+print(type(conjunto))
