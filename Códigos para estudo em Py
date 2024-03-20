@@ -37,7 +37,14 @@ L2[1] = 5
 L2[2] = 5
 print( L1 )
 ----------------------------------------------------------------------------------------------------------------------------
-
+"""atividade O código inicial tem uma variável chamada "soma" inicializada com 0. Em seguida, há um loop "for" que itera sobre os valores de "i" no intervalo de 1 a 4 (ou seja, 1, 2, 3, 4). Dentro do loop, a cada iteração, a variável "soma" é incrementada em 1. Finalmente, o valor de "soma" é impresso.
+Então, a saída desse código será 4, pois ele realiza a adição de 1 à variável "soma" quatro vezes (uma vez para cada valor de "i" no intervalo de 1 a 4).
+Aqui está o código corrigido para somar os valores de 1 a 4. o código adiciona o valor de "i" à variável "soma" a cada iteração, o que resultará na soma de todos os valores de 1 a 4, resultando em 10.:"""
+soma = 0
+for i in range(1, 5):
+    soma += i
+print(soma)
+----------------------------------------------------------------------------------------------------------------------------
 fruits = ['orange', 'apple', 'pear', 'banana', 'kiwi', 'apple', 'banana']
 #fruits.count('apple')
 #fruits.count('tangerine')
@@ -46,7 +53,117 @@ fruits = ['orange', 'apple', 'pear', 'banana', 'kiwi', 'apple', 'banana']
 fruits.append('grape')
 print(fruits.append('grape'))
 -----------------------------------------------------------------------------------------------------------------------------
+"""
+Este é um exemplo de função em Python chamada `calc`. A função recebe dois parâmetros, `a` e `b`, onde `b` tem um valor padrão de 2 caso não seja fornecido explicitamente. Dentro da função, ela multiplica `a` e `b`, armazena o resultado em `result` e o imprime.
 
+Quando a função `calc` é chamada com `a=2` e `b=5`, ela multiplica esses valores e imprime o resultado. Portanto, a saída deste código será:
+
+```
+10
+```
+Isso porque 2 * 5 é igual a 10.
+"""
+def calc(a, b=2):
+  result = a * b
+  print(result)
+
+calc(a=2, b=5)
+-----------------------------------------------------------------------------------------------------------------------------
+
+Aqui está um exemplo simples de um jogo usando a biblioteca Pygame. Este jogo é um clone básico do clássico "Pong":
+
+```python
+import pygame
+import random
+
+# Inicialização do Pygame
+pygame.init()
+
+# Configurações da janela do jogo
+WIDTH, HEIGHT = 800, 600
+FPS = 60
+WHITE = (255, 255, 255)
+BLACK = (0, 0, 0)
+
+# Configurações da barra do jogador
+PLAYER_WIDTH, PLAYER_HEIGHT = 15, 100
+PLAYER_SPEED = 5
+
+# Configurações da bola
+BALL_WIDTH, BALL_HEIGHT = 15, 15
+BALL_SPEED_X = 5
+BALL_SPEED_Y = 5
+
+# Criação da janela do jogo
+screen = pygame.display.set_mode((WIDTH, HEIGHT))
+pygame.display.set_caption("Pong")
+clock = pygame.time.Clock()
+
+# Função para reiniciar a posição da bola
+def reset_ball():
+    return WIDTH // 2 - BALL_WIDTH // 2, HEIGHT // 2 - BALL_HEIGHT // 2
+
+# Função principal do jogo
+def main():
+    # Posição inicial do jogador e da bola
+    player1_y = HEIGHT // 2 - PLAYER_HEIGHT // 2
+    player2_y = HEIGHT // 2 - PLAYER_HEIGHT // 2
+    ball_x, ball_y = reset_ball()
+    ball_dx = BALL_SPEED_X * random.choice((1, -1))
+    ball_dy = BALL_SPEED_Y * random.choice((1, -1))
+
+    # Loop principal do jogo
+    running = True
+    while running:
+        # Eventos do jogo
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+
+        # Movimentação do jogador
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_w] and player1_y > 0:
+            player1_y -= PLAYER_SPEED
+        if keys[pygame.K_s] and player1_y < HEIGHT - PLAYER_HEIGHT:
+            player1_y += PLAYER_SPEED
+
+        # Movimentação da bola
+        ball_x += ball_dx
+        ball_y += ball_dy
+
+        # Verifica se a bola colide com a parede superior ou inferior
+        if ball_y <= 0 or ball_y >= HEIGHT - BALL_HEIGHT:
+            ball_dy *= -1
+
+        # Verifica colisão com jogador
+        if ball_x <= PLAYER_WIDTH and player1_y < ball_y + BALL_HEIGHT < player1_y + PLAYER_HEIGHT:
+            ball_dx *= -1
+
+        # Verifica se a bola passa pelos limites da tela
+        if ball_x <= 0 or ball_x >= WIDTH - BALL_WIDTH:
+            ball_x, ball_y = reset_ball()
+
+        # Desenha os objetos na tela
+        screen.fill(BLACK)
+        pygame.draw.rect(screen, WHITE, (0, player1_y, PLAYER_WIDTH, PLAYER_HEIGHT))
+        pygame.draw.rect(screen, WHITE, (WIDTH - PLAYER_WIDTH, player2_y, PLAYER_WIDTH, PLAYER_HEIGHT))
+        pygame.draw.ellipse(screen, WHITE, (ball_x, ball_y, BALL_WIDTH, BALL_HEIGHT))
+        pygame.display.flip()
+
+        # Limita a taxa de quadros por segundo
+        clock.tick(FPS)
+
+    # Encerra o Pygame
+    pygame.quit()
+
+if __name__ == "__main__":
+    main()
+```
+
+Este é um jogo muito básico de Pong, onde o jogador pode mover sua barra para cima e para baixo usando as teclas "W" e "S" respectivamente. A bola rebaterá nas barras e nas paredes, e o jogo continuará até que o jogador feche a janela do jogo.
+
+
+-----------------------------------------------------------------------------------------------------------------------------
 # meteu 85 na posicçao 2 diferente de eu colocar listNum [2] = 85 que vai substituir
 listNum = [75, 93, 25, 17, 42, 93, 93]
 listNum.insert(2, 85)
