@@ -21,6 +21,14 @@ listNum = [75, 93, 25, 17, 42]
 listNum.append(55)
 
 print(listNum)
+----------------------------------------------------------------------------------------------------------------
+"""O código cria um dicionário chamado x que mapeia strings para inteiros. Este dicionário tem três chaves ("a", "b" e "c"), e cada uma delas está mapeada para o valor inteiro 5. Em seguida, o código imprime o resultado da função len() aplicada ao dicionário x.
+
+A função len() aplicada a um dicionário retorna o número de pares chave-valor no dicionário. Portanto, neste caso, como o dicionário x tem três pares chave-valor, a função len(x) retornará o valor 3.
+
+Portanto, a saída do código será: 3, Isso indica que o dicionário x tem três pares chave-valor."""
+x: dict[str, int] = { "a": 5,"b": 5,"c":5}
+print(len(x))
 ----------------------------------------------------------------------------------------------------------------------------
 fruits = ['orange', 'apple', 'pear', 'banana', 'kiwi', 'apple', 'banana']
 fruits.count('apple')
