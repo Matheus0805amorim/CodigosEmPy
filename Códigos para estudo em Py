@@ -1005,3 +1005,47 @@ print(pessoa.values())
 #são frequentementes utilizados para remover duplicatas de uma lista ou para fazer operações matemáticas como união ou interseção
 conjunto= {"branco","roxo","preto"}
 print(type(conjunto))
+--------------------------------------------------------------------------------------------------------
+"""exemplo básico de uma arquitetura de rede neural profunda em Python usando a biblioteca TensorFlow, uma das mais populares para desenvolvimento de redes neurais. Este exemplo demonstrará uma rede neural simples com uma camada de entrada, uma camada oculta e uma camada de saída, utilizando o framework Keras, que é uma API de alto nível integrada ao TensorFlow.
+Vamos criar uma rede neural para classificar imagens da base de dados MNIST, que consiste em dígitos escritos à mão.
+Este código cria e treina uma rede neural simples para classificação de dígitos manuscritos do conjunto de dados MNIST. A rede tem uma camada de entrada que achatada as imagens 28x28 em um vetor unidimensional, uma camada oculta com 128 neurônios e ativação ReLU, e uma camada de saída com 10 neurônios (um para cada dígito) e ativação softmax. O modelo é treinado por 10 épocas usando o otimizador Adam e a função de perda entropia cruzada categórica esparsa. Finalmente, a acurácia do modelo é avaliada com os dados de teste e um gráfico da acurácia ao longo das épocas é plotado.
+import tensorflow as tf
+from tensorflow.keras import layers, models
+from tensorflow.keras.datasets import mnist
+import matplotlib.pyplot as plt
+
+# Carregar o conjunto de dados MNIST e dividir em treinamento e teste
+(train_images, train_labels), (test_images, test_labels) = mnist.load_data()
+
+# Normalizar os valores dos pixels para o intervalo [0, 1]
+train_images = train_images.astype('float32') / 255.0
+test_images = test_images.astype('float32') / 255.0
+
+# Definir a arquitetura da rede neural
+model = models.Sequential([
+    layers.Flatten(input_shape=(28, 28)),  # Camada de entrada: achatamento das imagens 28x28 em um vetor unidimensional
+    layers.Dense(128, activation='relu'),  # Camada oculta com 128 neurônios e função de ativação ReLU
+    layers.Dense(10, activation='softmax') # Camada de saída com 10 neurônios (um para cada dígito) e função de ativação softmax
+])
+
+# Compilar o modelo
+model.compile(optimizer='adam',
+              loss='sparse_categorical_crossentropy',
+              metrics=['accuracy'])
+
+# Treinar o modelo
+history = model.fit(train_images, train_labels, epochs=10, validation_data=(test_images, test_labels))
+
+# Avaliar o modelo com os dados de teste
+test_loss, test_acc = model.evaluate(test_images, test_labels)
+print('Acurácia do teste:', test_acc)
+
+# Plotar a acurácia e a perda ao longo das épocas
+plt.plot(history.history['accuracy'], label='accuracy')
+plt.plot(history.history['val_accuracy'], label = 'val_accuracy')
+plt.xlabel('Epoch')
+plt.ylabel('Accuracy')
+plt.ylim([0, 1])
+plt.legend(loc='lower right')
+plt.show()
+
