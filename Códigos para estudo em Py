@@ -1049,3 +1049,86 @@ plt.ylim([0, 1])
 plt.legend(loc='lower right')
 plt.show()
 
+---------------------------------------------------------------------------------------------------------------------------------
+O conjunto de dados Iris é um clássico na aprendizagem de máquina e consiste em três classes de flores Iris (Setosa, Versicolour e Virginica), com quatro características (comprimento e largura das sépalas e pétalas).
+
+Passos:
+Carregar o conjunto de dados.
+Dividir o conjunto de dados em treinamento e teste.
+Treinar o modelo de regressão logística.
+Avaliar o modelo.
+Fazer previsões.
+
+Explicação:
+Carregar o conjunto de dados: Utilizamos a função load_iris da biblioteca scikit-learn para carregar o conjunto de dados Iris.
+Dividir o conjunto de dados: Usamos train_test_split para dividir o conjunto de dados em partes de treinamento e teste.
+Treinar o modelo: Criamos um modelo de regressão logística e treinamos com os dados de treinamento.
+Avaliar o modelo: Usamos accuracy_score para calcular a acurácia do modelo e classification_report para obter métricas detalhadas de desempenho.
+Fazer previsões: Usamos os dados de teste para fazer previsões e avaliar o desempenho do modelo.
+Execução:
+Para executar este código, você precisa ter o Python instalado juntamente com a biblioteca scikit-learn. Você pode instalar a biblioteca usando o seguinte comando:
+
+bash
+Copiar código
+pip install scikit-learn
+Depois, basta copiar o código para um arquivo Python e executá-lo. O resultado mostrará a acurácia do modelo e um relatório de classificação com precisão, recall e F1-score para cada classe.
+Interpretação dos Resultados
+Acurácia
+A acurácia do modelo indica a proporção de previsões corretas em relação ao total de previsões. Uma acurácia de, por exemplo, 95% indica que o modelo fez previsões corretas para 95% das amostras de teste.
+
+Relatório de Classificação
+O relatório de classificação inclui as seguintes métricas:
+
+Precisão (Precision): A proporção de verdadeiros positivos em relação ao total de positivos preditos (TP / (TP + FP)).
+Recall: A proporção de verdadeiros positivos em relação ao total de positivos reais (TP / (TP + FN)).
+F1-Score: A média harmônica da precisão e do recall (2 * (precision * recall) / (precision + recall)).
+Cada métrica é calculada para cada classe individualmente, proporcionando uma visão detalhada do desempenho do modelo em diferentes categorias.
+
+Conclusão
+Este exemplo demonstra como usar a biblioteca scikit-learn para treinar e avaliar um modelo de regressão logística no conjunto de dados Iris. Ele cobre os passos essenciais desde a importação das bibliotecas, carregamento e divisão dos dados, até o treinamento, previsão e avaliação do modelo. Este é um ponto de partida útil para explorar técnicas mais avançadas de machine learning usando scikit-learn.
+
+Se você tiver dúvidas ou precisar de mais detalhes sobre algum aspecto específico do código ou das bibliotecas utilizadas, sinta-se à vontade para perguntar!
+
+
+
+
+
+
+
+
+
+
+
+
+# Importar bibliotecas necessárias
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score, classification_report
+
+# Carregar o conjunto de dados Iris
+iris = load_iris()
+X = iris.data
+y = iris.target
+
+# Dividir o conjunto de dados em treinamento e teste (80% treino, 20% teste)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Criar o modelo de Regressão Logística
+model = LogisticRegression(max_iter=200)
+
+# Treinar o modelo com os dados de treinamento
+model.fit(X_train, y_train)
+
+# Fazer previsões com os dados de teste
+y_pred = model.predict(X_test)
+
+# Avaliar o modelo
+accuracy = accuracy_score(y_test, y_pred)
+report = classification_report(y_test, y_pred, target_names=iris.target_names)
+
+print(f"Acurácia do modelo: {accuracy * 100:.2f}%")
+print("Relatório de Classificação:")
+print(report)
+
+
