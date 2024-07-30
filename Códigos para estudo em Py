@@ -55,11 +55,43 @@ Se a implementação é difícil de explicar, é uma má idéia.
 Se a implementação é fácil de explicar, pode ser uma boa idéia.
 
 Namespaces são uma grande idéia -- vamos fazer mais dessas!
+___________________________________________________________________________________________________________________
+--------------------------------------------------------------------------------------------------------------------
+### Declarando uma variável bool
+esta_chovendo = False
 
+# Utilizando a variável em uma condição
+if esta_chovendo:
+    print("Leve um guarda-chuva!")
+else:
+    print("O dia está lindo!")
+#########################################################################################################
+# Verificando se um número é par
+
+numero = input("Digite um número: ")
+numero = int(numero)
+é_par = numero % 2 == 0
+
+if é_par:
+    print(numero, "é um número par.")
+else:
+    print(numero, "é um número ímpar.")
+########################################################################################################################
+
+Controle de acesso
+
+tem_acesso = False
+if tem_acesso:
+    print("Acesso permitido.")
+else:
+    print("Acesso negado.")
+
+__________________________________________________________________________________________________________________
 -------------------------------------------------------------------------------------------------------------------------------------------------
 frutas = ['tomate','maçã','morango','banana','melão']
 frutas.append('pimenta')
 print(frutas)
+____________________________________________________________________________________________________________________________________________________
 ----------------------------------------------------------------------------------------------------------------------------
 #.append() vai adicionar um valor ao final da lista
 listNum = [75, 93, 25, 17, 42]
@@ -67,7 +99,7 @@ listNum.append(55)
 
 print(listNum)
 
-----------------------------------------------------------------------------------------------------------------
+____________________________________________________________________________________________________________________________________________________
 ----------------------------------------------------------------------------------------------------------------
 O que é um modelo de linguagem ampla (LLM)?
 Um modelo de linguagem grande (LLM) é um tipo de programa de inteligência artificial (IA) que pode reconhecer e gerar texto, entre outras tarefas. Os LLMs são treinados em enormes conjuntos de dados — daí o nome "grande". Os LLMs são baseados em aprendizado de máquina: especificamente, um tipo de rede neural chamada de modelo transformer.
@@ -211,7 +243,7 @@ Este projeto exemplifica como criar um assistente virtual utilizando um modelo d
 O processo envolve a definição dos requisitos, escolha do modelo, desenvolvimento da API backend, treinamento e ajuste do modelo, testes, desenvolvimento da interface do usuário, 
 e a implementação final. Com ajustes adequados e testes contínuos, este assistente pode fornecer um suporte eficiente e melhorar significativamente a experiência do cliente.
 
-
+____________________________________________________________________________________________________________________________________________________
 -----------------------------------------------------------------------------------------------------------------
 
 """O código cria um dicionário chamado x que mapeia strings para inteiros. Este dicionário tem três chaves ("a", "b" e "c"), e cada uma delas está mapeada para o valor inteiro 5. Em seguida, o código imprime o resultado da função len() aplicada ao dicionário x.
@@ -221,21 +253,29 @@ A função len() aplicada a um dicionário retorna o número de pares chave-valo
 Portanto, a saída do código será: 3, Isso indica que o dicionário x tem três pares chave-valor."""
 x: dict[str, int] = { "a": 5,"b": 5,"c":5}
 print(len(x))
+
+____________________________________________________________________________________________________________________________________________________
 ----------------------------------------------------------------------------------------------------------------------------
 fruits = ['orange', 'apple', 'pear', 'banana', 'kiwi', 'apple', 'banana']
 fruits.count('apple')
+
+____________________________________________________________________________________________________________________________________________________
 ----------------------------------------------------------------------------------------------------------------------------
 L1 = [2, 3, 8, 10]
 L2 = [1, 0, 56, 29]
 L3 = L1 + L2
 
 print(L3)
+
+____________________________________________________________________________________________________________________________________________________
 ---------------------
 L1 = [2, 3, 8, 10]
 L2 = L1
 L2[1] = 5
 L2[2] = 5
 print( L1 )
+
+____________________________________________________________________________________________________________________________________________________
 ----------------------------------------------------------------------------------------------------------------------------
 """atividade O código inicial tem uma variável chamada "soma" inicializada com 0. Em seguida, há um loop "for" que itera sobre os valores de "i" no intervalo de 1 a 4 (ou seja, 1, 2, 3, 4). Dentro do loop, a cada iteração, a variável "soma" é incrementada em 1. Finalmente, o valor de "soma" é impresso.
 Então, a saída desse código será 4, pois ele realiza a adição de 1 à variável "soma" quatro vezes (uma vez para cada valor de "i" no intervalo de 1 a 4).
@@ -244,6 +284,8 @@ soma = 0
 for i in range(1, 5):
     soma += i
 print(soma)
+
+____________________________________________________________________________________________________________________________________________________
 ----------------------------------------------------------------------------------------------------------------------------
 fruits = ['orange', 'apple', 'pear', 'banana', 'kiwi', 'apple', 'banana']
 #fruits.count('apple')
@@ -252,6 +294,8 @@ fruits = ['orange', 'apple', 'pear', 'banana', 'kiwi', 'apple', 'banana']
 #fruits.index('banana', 4)
 fruits.append('grape')
 print(fruits.append('grape'))
+
+____________________________________________________________________________________________________________________________________________________
 -----------------------------------------------------------------------------------------------------------------------------
 """
 Este é um exemplo de função em Python chamada `calc`. A função recebe dois parâmetros, `a` e `b`, onde `b` tem um valor padrão de 2 caso não seja fornecido explicitamente. Dentro da função, ela multiplica `a` e `b`, armazena o resultado em `result` e o imprime.
@@ -268,6 +312,8 @@ def calc(a, b=2):
   print(result)
 
 calc(a=2, b=5)
+
+____________________________________________________________________________________________________________________________________________________
 -----------------------------------------------------------------------------------------------------------------------------
 #jogo do ping pong
 
@@ -333,6 +379,7 @@ calc(a=2, b=5)
    O código pode ser estendido e modificado para adicionar mais funcionalidades, como
    efeitos sonoros, pontuação, níveis de dificuldade, entre outros.
 
+____________________________________________________________________________________________________________________________________________________
 ========================================================================
 
 
@@ -437,6 +484,8 @@ if __name__ == "__main__":
 A movimentação da barra do jogador 2 (direita) é controlada de forma autônoma, com base na posição da bola. 
 A barra se move para cima se a bola estiver acima do centro da barra e se move para baixo se a bola estiver abaixo do centro da barra. Isso cria um adversário automatizado para o jogador.
 
+
+____________________________________________________________________________________________________________________________________________________
 -----------------------------------------------------------------------------------------------------------------------------
 # meteu 85 na posicçao 2 diferente de eu colocar listNum [2] = 85 que vai substituir
 listNum = [75, 93, 25, 17, 42, 93, 93]
@@ -448,12 +497,15 @@ print(listNum)
 
 print("o elemento 93 se repete", listNum.count(93), "vezes") # quantos elementos daquele tem na lista
 
+____________________________________________________________________________________________________________________________________________________
 -------------------------------------------------------------------------------------------------------------------
 #.remove vai remover da lista o elemento selecionado
 listNum = [75, 93, 25, 17, 42]
 listNum.remove(75)
 
 print(listNum)
+
+____________________________________________________________________________________________________________________________________________________
 ------------------------------------------------------------------------------------------------------------------------
 x = 2
 x *= 5
@@ -475,6 +527,8 @@ numbers = [1, 2, 3, 4, 5]
 squared = map(lambda x: x**2, numbers)
 print(list(squared))  # Output: [1, 4, 9, 16, 25]
 #Embora as funções lambda possam ser úteis em certas situações, é importante notar que elas são limitadas a expressões simples. Se você precisar de uma função mais complexa, é melhor usar a declaração def para definir uma função nomeada.
+
+____________________________________________________________________________________________________________________________________________________
 ----------------------------------------------------------------------------------------------------------------------------------
 #Numpy é uma biblioteca do py para o processamento cientifico de dados
 #fornece uma estrutura de dados chamada array NumPy qu armazenam dados de forma eficientes
@@ -511,6 +565,8 @@ print(list(squared))  # Output: [1, 4, 9, 16, 25]
 
 #no jupyter**
 #instalalar o ipykernel
+
+____________________________________________________________________________________________________________________________________________________
 --------------------------------------------------------------------------------------------------------------------------------
 #solicita dos numeros e mostra a media
 numero_1 = input("Digite o primeiro numero:")
