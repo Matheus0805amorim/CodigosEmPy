@@ -25,7 +25,7 @@ Aqui você encontrará:
 
 1️⃣ Clone o repositório:
 ```bash
-git clone https://github.com/seu-usuario/seu-repositorio.git
+https://github.com/Matheus0805amorim/CodigosEmPy.git
 ```
 
 2️⃣ Acesse a pasta do repositório:
