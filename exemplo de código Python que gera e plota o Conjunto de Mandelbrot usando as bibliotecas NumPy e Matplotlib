@@ -1,0 +1,35 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Parâmetros da imagem
+largura, altura = 800, 800
+x_min, x_max = -2.0, 1.0
+y_min, y_max = -1.5, 1.5
+max_iter = 100  # Número máximo de iterações
+
+# Criação da grade de números complexos
+x = np.linspace(x_min, x_max, largura)
+y = np.linspace(y_min, y_max, altura)
+X, Y = np.meshgrid(x, y)
+C = X + 1j * Y
+
+# Inicialização de Z e da matriz que armazena o número de iterações
+Z = np.zeros_like(C)
+mandelbrot = np.zeros(C.shape, dtype=int)
+
+# Iteração para determinar se cada ponto converge ou diverge
+for n in range(max_iter):
+    # Máscara para pontos onde a magnitude de Z é menor ou igual a 2
+    mask = np.abs(Z) <= 2
+    # Atualiza Z apenas onde ainda não divergiu
+    Z[mask] = Z[mask] ** 2 + C[mask]
+    # Registra o número de iterações quando Z passa a divergir
+    mandelbrot[mask & (np.abs(Z) > 2)] = n
+
+# Plotando o conjunto de Mandelbrot
+plt.figure(figsize=(8, 8))
+plt.imshow(mandelbrot, extent=(x_min, x_max, y_min, y_max), cmap='hot')
+plt.xlabel('Parte Real')
+plt.ylabel('Parte Imaginária')
+plt.title('Conjunto de Mandelbrot')
+plt.show()
