@@ -1,3 +1,39 @@
+# Conjunto de Mandelbrot em Python
+
+Este projeto implementa um gerador do Conjunto de Mandelbrot utilizando Python, com as bibliotecas NumPy e Matplotlib. O objetivo é demonstrar como uma fórmula simples pode gerar padrões complexos e visualmente interessantes, característicos dos fractais.
+
+## Descrição
+
+O Conjunto de Mandelbrot é definido pela iteração da fórmula:
+
+\[
+z_{n+1} = z_n^2 + c, \quad \text{com } z_0 = 0,
+\]
+
+onde **c** é um número complexo. Um ponto \( c \) pertence ao conjunto se, após repetidas iterações, a sequência \(\{z_n\}\) permanecer limitada (não divergir para o infinito). O código gera uma grade de números complexos e, para cada ponto, aplica a iteração para determinar se ele diverge ou não, colorindo-o de acordo com o número de iterações necessárias para atingir um critério de divergência (quando \(|z| > 2\)).
+
+## Pré-requisitos
+
+- Python 3.x
+- Bibliotecas:
+  - [NumPy](https://numpy.org/)
+  - [Matplotlib](https://matplotlib.org/)
+
+Para instalar as bibliotecas necessárias, execute:
+
+```bash
+pip install numpy matplotlib
+
+
+
+
+
+
+
+
+
+
+
 import numpy as np
 import matplotlib.pyplot as plt
 
