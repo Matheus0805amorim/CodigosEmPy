@@ -1298,7 +1298,22 @@ plt.legend(loc='lower right')
 plt.show()
 
 ---------------------------------------------------------------------------------------------------------------------------------
-O conjunto de dados Iris é um clássico na aprendizagem de máquina e consiste em três classes de flores Iris (Setosa, Versicolour e Virginica), com quatro características (comprimento e largura das sépalas e pétalas).
+O conjunto de dados Iris é um clássico na aprendizagem de máquina e consiste em três classes de flores Iris (Setosa, Versicolour e Virginica), 
+com quatro características (comprimento e largura das sépalas e pétalas).
+O conjunto de dados Iris é um dos mais famosos e utilizados na área de aprendizado de máquina. Criado por Ronald Fisher em 1936, ele contém 150 amostras de flores de três espécies de Iris (Iris setosa, Iris virginica e Iris versicolor). Cada amostra é descrita por quatro atributos: comprimento e largura das sépalas e das pétalas.
+
+Principais Características
+
+- **Simplicidade e Dimensionalidade:** Com apenas quatro atributos, o dataset permite uma visualização e interpretação mais intuitiva dos dados, facilitando a compreensão dos algoritmos de classificação.
+- **Diversidade Controlada:** Apesar de simples, a variedade das amostras entre as três espécies fornece um cenário adequado para testar e comparar diferentes técnicas de aprendizado supervisionado.
+
+Uso no Aprendizado de IAs
+
+- **Treinamento e Teste:** É amplamente utilizado para treinar e validar modelos de classificação, como árvores de decisão, k-NN, SVM, redes neurais, entre outros.
+- **Demonstração de Técnicas Estatísticas:** Permite demonstrar conceitos estatísticos e métodos de redução de dimensionalidade, como análise de componentes principais (PCA).
+- **Benchmark e Ensino:** Devido à sua simplicidade e relevância histórica, o dataset Iris é frequentemente empregado em cursos e tutoriais de ciência de dados e inteligência artificial, servindo como benchmark para comparar a eficácia de novos algoritmos.
+
+Em resumo, o conjunto de dados Iris é uma ferramenta didática essencial no campo da IA, possibilitando experimentações rápidas e eficientes com diversas técnicas de aprendizado, contribuindo tanto para o ensino quanto para a pesquisa em ciência de dados.
 
 Passos:
 Carregar o conjunto de dados.
@@ -1333,15 +1348,9 @@ F1-Score: A média harmônica da precisão e do recall (2 * (precision * recall)
 Cada métrica é calculada para cada classe individualmente, proporcionando uma visão detalhada do desempenho do modelo em diferentes categorias.
 
 Conclusão
-Este exemplo demonstra como usar a biblioteca scikit-learn para treinar e avaliar um modelo de regressão logística no conjunto de dados Iris. Ele cobre os passos essenciais desde a importação das bibliotecas, carregamento e divisão dos dados, até o treinamento, previsão e avaliação do modelo. Este é um ponto de partida útil para explorar técnicas mais avançadas de machine learning usando scikit-learn.
-
-Se você tiver dúvidas ou precisar de mais detalhes sobre algum aspecto específico do código ou das bibliotecas utilizadas, sinta-se à vontade para perguntar!
-
-
-
-
-
-
+Este exemplo demonstra como usar a biblioteca scikit-learn para treinar e avaliar um modelo de regressão logística no conjunto de dados Iris. 
+Ele cobre os passos essenciais desde a importação das bibliotecas, carregamento e divisão dos dados, até o treinamento, previsão e avaliação do modelo. 
+Este é um ponto de partida útil para explorar técnicas mais avançadas de machine learning usando scikit-learn.
 
 
 
