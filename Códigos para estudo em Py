@@ -1446,7 +1446,7 @@ print("Relatório de Classificação:")
 print(report)
 
 --------------------------------------------------------------------------------------------------------------------------
-"""
+""" versão do Jogo da cobrinha 
 1. Estrutura Geral do Código
 O código está dividido em três partes principais:
 
