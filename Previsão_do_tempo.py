@@ -58,7 +58,7 @@ Solicita ao usuário o nome da cidade para consulta.
 
 #### Chave da API
 ```python
-api_key = "3257aa16358b201908bde87efe7507f2"
+api_key = "sua_chave"
 ```
 A chave de API é necessária para acessar os serviços da OpenWeatherMap.
 
@@ -122,7 +122,7 @@ if __name__ == "__main__":
     cidade = input("Digite o nome da cidade: ")
 
     # Sua chave de API do OpenWeatherMap
-    api_key = "3257aa16358b201908bde87efe7507f2"
+    api_key = "sua_chave"
 
     dados = get_weather(cidade, api_key)
 
