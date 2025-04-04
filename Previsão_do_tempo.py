@@ -143,15 +143,6 @@ if __name__ == "__main__":
         print(f"Não foi possível obter a previsão do tempo para {cidade}. Erro: {mensagem}")
 
 
+# Imagem relacionada ao projeto: imagem.png
 
-import os
-
-# Caminho para a imagem dentro do repositório
-caminho_imagem = os.path.join(os.path.dirname(__file__), "imagem.png")
-
-# Verifica se a imagem está no repositório
-if os.path.exists(caminho_imagem):
-    print(f"A imagem está disponível no repositório: {caminho_imagem}")
-else:
-    print("A imagem não foi encontrada no repositório.")
 
