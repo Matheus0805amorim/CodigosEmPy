@@ -89,16 +89,10 @@ else:
     mensagem = dados.get("message", "Erro desconhecido") if dados else "Sem dados"
     print(f"Não foi possível obter a previsão do tempo para {cidade}. Erro: {mensagem}")
 ```
-
-## Considerações Finais
-- O script é simples e eficaz para buscar informações meteorológicas.
-- Para evitar o uso de uma chave de API fixa no código, pode-se utilizar variáveis de ambiente.
-- O tratamento de erros poderia ser aprimorado para lidar com diferentes cenários, como conexão lenta ou cidade inexistente.
-- A implementação pode ser expandida para incluir previsão para múltiplos dias ou dados adicionais como sensação térmica e pressão atmosférica.
-
+```
 ###para saber mais sobre como usar e criar uma chave API KEY. Importante dizer que ao criar a chave pode levar um tempo até ela funcionar.
 ###https://www.ionos.com/pt-br/digitalguide/sites-de-internet/desenvolvimento-web/openweather-api-key/
-
+```
 ###código
 import requests
 
@@ -144,5 +138,10 @@ if __name__ == "__main__":
 
 
 # Imagem relacionada ao projeto: imagem.png
-
-
+```
+## Considerações Finais
+- O script é simples e eficaz para buscar informações meteorológicas.
+- Para evitar o uso de uma chave de API fixa no código, pode-se utilizar variáveis de ambiente.
+- O tratamento de erros poderia ser aprimorado para lidar com diferentes cenários, como conexão lenta ou cidade inexistente.
+- A implementação pode ser expandida para incluir previsão para múltiplos dias ou dados adicionais como sensação térmica e pressão atmosférica.
+- A chave que está na imagem não vai funcionar pois foi só pra exemplo, siga os passos do artigo e crie a sua.
