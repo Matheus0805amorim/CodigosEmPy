@@ -143,6 +143,5 @@ if __name__ == "__main__":
         print(f"Não foi possível obter a previsão do tempo para {cidade}. Erro: {mensagem}")
 
 
-git add imagem.png
-git commit -m "Adicionando imagem ao repositório"
+
 
