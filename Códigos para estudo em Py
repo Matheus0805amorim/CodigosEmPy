@@ -2,7 +2,7 @@
 
 História: O python foi criada por Guido van rossum.É uma linguagem de alto nivel e código aberto. De facil legibilidade, amplamente usada, para ciências de dados, automação etc.
 
-Sintaxe
+#Sintaxe
 
 O py usa a indentação para definir seus blocos de códigos, diferente de algumas outras longuagens que usam chaves. Não há a necessidade de declarar variaveis, pois a sua tipagem é dinâmica(fracamente tipada) variavel São usadas para armazenar dados ex--- nome = "pedro"
 
@@ -13,10 +13,10 @@ slicing permite obter partes de uma string, começa em 0 sempre. ex frase = "dia
 Operador is para verificar se duas variaveis se referem ao mesma posição na memoria x =[1,2,3] y = x print(x is y) ---> True
 
 ```
-------------------------------------------------------------------
+
+
+#-------------------------------------------------------------------------------------------------------------------------------------------------
 The Zen of Python, por Tim Peters
-
-
 
 Bonito é melhor que feio.
 
@@ -55,8 +55,10 @@ Se a implementação é difícil de explicar, é uma má idéia.
 Se a implementação é fácil de explicar, pode ser uma boa idéia.
 
 Namespaces são uma grande idéia -- vamos fazer mais dessas!
-___________________________________________________________________________________________________________________
---------------------------------------------------------------------------------------------------------------------
+
+
+
+#--------------------------------------------------------------------------------------------------------------------
 ### Declarando uma variável bool
 esta_chovendo = False
 
@@ -65,7 +67,10 @@ if esta_chovendo:
     print("Leve um guarda-chuva!")
 else:
     print("O dia está lindo!")
-#########################################################################################################
+
+
+
+#-------------------------------------------------------------------------------------------------------------------------------------------------
 # Verificando se um número é par
 
 numero = input("Digite um número: ")
@@ -76,8 +81,10 @@ if é_par:
     print(numero, "é um número par.")
 else:
     print(numero, "é um número ímpar.")
-########################################################################################################################
 
+
+
+#-------------------------------------------------------------------------------------------------------------------------------------------------
 Controle de acesso
 
 tem_acesso = False
@@ -86,21 +93,26 @@ if tem_acesso:
 else:
     print("Acesso negado.")
 
-__________________________________________________________________________________________________________________
--------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+#-------------------------------------------------------------------------------------------------------------------------------------------------
 frutas = ['tomate','maçã','morango','banana','melão']
 frutas.append('pimenta')
 print(frutas)
-____________________________________________________________________________________________________________________________________________________
-----------------------------------------------------------------------------------------------------------------------------
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------
 #.append() vai adicionar um valor ao final da lista
 listNum = [75, 93, 25, 17, 42]
 listNum.append(55)
 
 print(listNum)
 
+
+
 ____________________________________________________________________________________________________________________________________________________
-----------------------------------------------------------------------------------------------------------------
+#----------------------------------------------------------------------------------------------------------------
 O que é um modelo de linguagem ampla (LLM)?
 Um modelo de linguagem grande (LLM) é um tipo de programa de inteligência artificial (IA) que pode reconhecer e gerar texto, entre outras tarefas. Os LLMs são treinados em enormes conjuntos de dados — daí o nome "grande". Os LLMs são baseados em aprendizado de máquina: especificamente, um tipo de rede neural chamada de modelo transformer.
 
@@ -243,8 +255,9 @@ Este projeto exemplifica como criar um assistente virtual utilizando um modelo d
 O processo envolve a definição dos requisitos, escolha do modelo, desenvolvimento da API backend, treinamento e ajuste do modelo, testes, desenvolvimento da interface do usuário, 
 e a implementação final. Com ajustes adequados e testes contínuos, este assistente pode fornecer um suporte eficiente e melhorar significativamente a experiência do cliente.
 
-____________________________________________________________________________________________________________________________________________________
------------------------------------------------------------------------------------------------------------------
+
+
+#-----------------------------------------------------------------------------------------------------------------
 
 """O código cria um dicionário chamado x que mapeia strings para inteiros. Este dicionário tem três chaves ("a", "b" e "c"), e cada uma delas está mapeada para o valor inteiro 5. Em seguida, o código imprime o resultado da função len() aplicada ao dicionário x.
 
@@ -254,29 +267,29 @@ Portanto, a saída do código será: 3, Isso indica que o dicionário x tem trê
 x: dict[str, int] = { "a": 5,"b": 5,"c":5}
 print(len(x))
 
-____________________________________________________________________________________________________________________________________________________
-----------------------------------------------------------------------------------------------------------------------------
+
+#----------------------------------------------------------------------------------------------------------------------------
 fruits = ['orange', 'apple', 'pear', 'banana', 'kiwi', 'apple', 'banana']
 fruits.count('apple')
 
-____________________________________________________________________________________________________________________________________________________
-----------------------------------------------------------------------------------------------------------------------------
+
+#----------------------------------------------------------------------------------------------------------------------------
 L1 = [2, 3, 8, 10]
 L2 = [1, 0, 56, 29]
 L3 = L1 + L2
 
 print(L3)
 
-____________________________________________________________________________________________________________________________________________________
----------------------
+
+#----------------------------------------------------------------------------------------------------------------------------
 L1 = [2, 3, 8, 10]
 L2 = L1
 L2[1] = 5
 L2[2] = 5
 print( L1 )
 
-____________________________________________________________________________________________________________________________________________________
-----------------------------------------------------------------------------------------------------------------------------
+
+#----------------------------------------------------------------------------------------------------------------------------
 """atividade O código inicial tem uma variável chamada "soma" inicializada com 0. Em seguida, há um loop "for" que itera sobre os valores de "i" no intervalo de 1 a 4 (ou seja, 1, 2, 3, 4). Dentro do loop, a cada iteração, a variável "soma" é incrementada em 1. Finalmente, o valor de "soma" é impresso.
 Então, a saída desse código será 4, pois ele realiza a adição de 1 à variável "soma" quatro vezes (uma vez para cada valor de "i" no intervalo de 1 a 4).
 Aqui está o código corrigido para somar os valores de 1 a 4. o código adiciona o valor de "i" à variável "soma" a cada iteração, o que resultará na soma de todos os valores de 1 a 4, resultando em 10.:"""
@@ -285,8 +298,9 @@ for i in range(1, 5):
     soma += i
 print(soma)
 
-____________________________________________________________________________________________________________________________________________________
-----------------------------------------------------------------------------------------------------------------------------
+
+
+#----------------------------------------------------------------------------------------------------------------------------
 fruits = ['orange', 'apple', 'pear', 'banana', 'kiwi', 'apple', 'banana']
 #fruits.count('apple')
 #fruits.count('tangerine')
@@ -295,8 +309,9 @@ fruits = ['orange', 'apple', 'pear', 'banana', 'kiwi', 'apple', 'banana']
 fruits.append('grape')
 print(fruits.append('grape'))
 
-____________________________________________________________________________________________________________________________________________________
------------------------------------------------------------------------------------------------------------------------------
+
+
+#-----------------------------------------------------------------------------------------------------------------------------
 """
 Este é um exemplo de função em Python chamada `calc`. A função recebe dois parâmetros, `a` e `b`, onde `b` tem um valor padrão de 2 caso não seja fornecido explicitamente. Dentro da função, ela multiplica `a` e `b`, armazena o resultado em `result` e o imprime.
 
@@ -313,8 +328,9 @@ def calc(a, b=2):
 
 calc(a=2, b=5)
 
-____________________________________________________________________________________________________________________________________________________
------------------------------------------------------------------------------------------------------------------------------
+
+
+#-----------------------------------------------------------------------------------------------------------------------------
 #jogo do ping pong
 
 ========================================================================
@@ -379,12 +395,10 @@ ________________________________________________________________________________
    O código pode ser estendido e modificado para adicionar mais funcionalidades, como
    efeitos sonoros, pontuação, níveis de dificuldade, entre outros.
 
-____________________________________________________________________________________________________________________________________________________
-========================================================================
 
 
 
-
+#-----------------------------------------------------------------------------------------------------------------------------------------------------
 import pygame
 import random
 
@@ -485,8 +499,8 @@ A movimentação da barra do jogador 2 (direita) é controlada de forma autônom
 A barra se move para cima se a bola estiver acima do centro da barra e se move para baixo se a bola estiver abaixo do centro da barra. Isso cria um adversário automatizado para o jogador.
 
 
-____________________________________________________________________________________________________________________________________________________
------------------------------------------------------------------------------------------------------------------------------
+
+#-----------------------------------------------------------------------------------------------------------------------------
 # meteu 85 na posicçao 2 diferente de eu colocar listNum [2] = 85 que vai substituir
 listNum = [75, 93, 25, 17, 42, 93, 93]
 listNum.insert(2, 85)
@@ -497,16 +511,17 @@ print(listNum)
 
 print("o elemento 93 se repete", listNum.count(93), "vezes") # quantos elementos daquele tem na lista
 
-____________________________________________________________________________________________________________________________________________________
--------------------------------------------------------------------------------------------------------------------
+
+
+#-------------------------------------------------------------------------------------------------------------------
 #.remove vai remover da lista o elemento selecionado
 listNum = [75, 93, 25, 17, 42]
 listNum.remove(75)
 
 print(listNum)
 
-____________________________________________________________________________________________________________________________________________________
-------------------------------------------------------------------------------------------------------------------------
+
+#------------------------------------------------------------------------------------------------------------------------
 x = 2
 x *= 5
 print(x)
@@ -528,8 +543,9 @@ squared = map(lambda x: x**2, numbers)
 print(list(squared))  # Output: [1, 4, 9, 16, 25]
 #Embora as funções lambda possam ser úteis em certas situações, é importante notar que elas são limitadas a expressões simples. Se você precisar de uma função mais complexa, é melhor usar a declaração def para definir uma função nomeada.
 
-____________________________________________________________________________________________________________________________________________________
-----------------------------------------------------------------------------------------------------------------------------------
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
 #Numpy é uma biblioteca do py para o processamento cientifico de dados
 #fornece uma estrutura de dados chamada array NumPy qu armazenam dados de forma eficientes
 #realizam operações: matemática, estatisticas e visualização de dados
@@ -566,8 +582,9 @@ ________________________________________________________________________________
 #no jupyter**
 #instalalar o ipykernel
 
-____________________________________________________________________________________________________________________________________________________
---------------------------------------------------------------------------------------------------------------------------------
+
+
+#--------------------------------------------------------------------------------------------------------------------------------
 #solicita dos numeros e mostra a media
 numero_1 = input("Digite o primeiro numero:")
 numero_2 = input("Digite o segundo  numero: ")
@@ -575,17 +592,22 @@ numero_2 = input("Digite o segundo  numero: ")
 resultado = numero_1 + numero_2
 
 print(resultado)
---------------------------------------------------------------------------------------------------------------------------
+
+
+
+#--------------------------------------------------------------------------------------------------------------------------
 lista = [1,2,3,4,5,5]
 lista.remove(5)
 print(lista)
--------------------------
 x =2
 y = 2
 
 resultado= x*y
 print(resultado)
------------------------------------------------------------------------------------------------------------------------------
+
+
+
+#-----------------------------------------------------------------------------------------------------------------------------
 #Funções: blocos de códigos que permitem agrupar conjuntos de instruções que podem ser chamadas quando necessario
 #tipos de funções:
 #Funções nativas: já existente no python, que fornecem ferramentas para trabalhar com operações logicas, matemáticas, texto etc
@@ -621,7 +643,10 @@ valor_2 = float(input("informe o valor 2: "))     #escopo global
 opcao = (input("qual a operação: "))     #escopo global
 resultado = soma_multiplica(valor_1,valor_2, opcao)   #escopo global
 print(resultado)
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+#-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #orientação a objeto
 
 #para o python um objeto é qualquer coisa que armazena um valor, nas lingu não orientadas a objetos variavel é só uma posição de valor
@@ -662,7 +687,9 @@ pessoa3.saudacao()
 print(pessoa1.nome)# acessando o atributo nome
 
 #Herança: é quando uma classe herda atributos e metodos de outras classes
--------------------------------------------------------------------------------------------------------------------------------
+
+
+#-------------------------------------------------------------------------------------------------------------------------------
 #herança:
 #Exerc: sitema de gerenciamneto de de bilblioteca. crie classe para livro, autor e usuario. Permita emprestimo, devolução e busca de livros
 
@@ -701,7 +728,10 @@ print(livro_1.autor)
 print(livro_1.titulo)
 print(livro_1.emprestado)
 livro_1.emprestar()
--------------------------------------------------------------------------------------------------------
+
+
+
+#-------------------------------------------------------------------------------------------------------
 #Leitura e escrita de arquivos
 #
 # Abrir  arquivo=open('exemplo.txt', 'r') o random aponta para um objeto, modo leitura
@@ -732,7 +762,10 @@ arquivo.close()
 #
 #          arquivo = open('exemplo.txt',''a') vai pegar um arquivo que já exite e escrever nele,
 #          arquivo.write("Escrevendo.\n")
------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+#-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #Banco de dados-CRUD
 #banco de dados uma coleçao de dados organizados, b. relacional em tambelas
 #CRUD é um acronimo para CREAD, READ, UPDATE, DELETE
@@ -742,7 +775,9 @@ arquivo.close()
 # DELETE para deletar
 
 #SqLite, da pra usar no python, import
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+#----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 class Livro():
     def __init__(self, titulo, autor):
         self.titulo = titulo
@@ -756,7 +791,9 @@ livro_2 = Livro("UM campo de choro", "Theus")
 
 livro_1.infor()
 livro_2.infor()
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 class ContaBancaria():
     def __init__(self, valor_inicial):
       self.saldo = valor_inicial
@@ -780,7 +817,9 @@ conta1 = ContaBancaria(1000)
 conta1.deposita(500)
 conta1.sacar(300)
 conta1.verificar_saldo()
------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+#-----------------------------------------------------------------------------------------------------------------------------------------------------
 #Strings: sequência de caracteres que podem incluir letras, números, epaços e simbolos. São imutáveis, ordenadas e indexáveis.
 #frase = "python é incrivel"
 #print( frase* 3 )#vai imprimir 3 x a frase
@@ -817,7 +856,9 @@ print(frase.upper())
 #replace() substitui caracteres
 frase = "python é incrivel"
 print(frase.replace(" ","---"))# substitui espaço vazio por ---
-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------
 #Bem, se vc não colocar a droga da função int() vai dá erro *
 #Exercicio:
 valor1 = input("Digite o 1º valor ")
@@ -830,7 +871,9 @@ print(valor1 + valor2)
 print(valor1 - valor2)
 print(valor1 * valor2)
 print(valor1 % valor2)
-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------
 #Esse programa vai calcular o preço total de uma compra. Vai solicitar ao usuario o valor de cada item e vai calcular + impostos
 #Exercicio
 total = 0
@@ -844,7 +887,9 @@ while True:
 
 total = total*imposto + total
 print("O valor do item é: ", total)
--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+#-------------------------------------------------------------------------------------------------------------------------------------------------------
 #listas python: são coleção de itens que podem ser de diferentes tipos, criadas por [ e, separadas, por ,]
 #usadas para armazenamentos de dados
 
@@ -870,7 +915,9 @@ print(lista_frutas)
 lista_frutas2 = ["goiaba","tomate","caju"]
 lista_frutas2.append("kiwi")
 print(lista_frutas2)
--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #O programa vai solicitar ao usuario que adivinhe um número entre 1 e 50, o programa vai dizer ao usuario se o número é maior ou menor e solicitar novas tentativas ate acertar
 #Exercicio
 
@@ -884,7 +931,9 @@ while True:# esse comando vai deixar o programa rodando infinitamente
           print("o numero digitado é menor que o que voçe digitou, tente novamente: ")
       else:
           print("o numero digitado é maior que o que voçe digitou, tente novamente: ")
-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------
 #programa contagem regressiva de 0 a dez com o comando while
 #Exercicio
 contador = 0
@@ -897,7 +946,9 @@ numero_total = 10
 while(numero_total >=0):
     print(numero_total)
     numero_total = numero_total -1
----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+#---------------------------------------------------------------------------------------------------------------------------------------------------------
 #Desvio condicional
 #exercicio fila prioritaria
 x = 23
@@ -916,7 +967,7 @@ if idade < 3 or idade > 60:
 else:
    print("fila regular")
 -----------------------------------------------------------------------------------------------------------------------------------------------------
-#-------------------------- do meu jeito
+#do meu jeito
 
 x = input("Digite uma idade ")
 
@@ -944,7 +995,10 @@ if (idade > 16) and(idade < 59) and(peso > 50) and(quantidade_de_horas_dormidas_
           print("paciente pode doar sangue")
 else:
           print("não pode doar sangue")
-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------------------------------------
 #funçoes do print
 
 print("unica linha")
@@ -979,7 +1033,10 @@ nome = 'páulo'
 idade = 23
 
 print(f"nome:\t{nome}\tidade:\t{idade}")
----------------------------------------------------------------------------------------------------------------------------------
+
+
+
+#---------------------------------------------------------------------------------------------------------------------------------
 # Importando as bibliotecas necessárias
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
@@ -1069,8 +1126,9 @@ print("Fim")
 """comentario
 em bloco aspas"""
 
-#--------------------------------------------------------------------------------------------------------------------#
 
+
+#--------------------------------------------------------------------------------------------------------------------#
 #indentação : em python é feita pela quantidade de espaços, ele endende que * esta dento do bloco if e else
 #x = -23
 #if x > 0:
@@ -1079,7 +1137,8 @@ em bloco aspas"""
 #else:
  # print("x é negativo")  *
 
- #-------------------------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------------------------
 # a variavel str tranforma algum numero em texto.
 # a função "input" serve para ler um dado fornnecido pelo usuario uma caixinha aparece.
 #--------------------------------------------------------------------------------------------------------------------#
@@ -1090,8 +1149,9 @@ em bloco aspas"""
 #float -numeros de ponto flutuantes, os positivos e os negativos, bem como os que possuem casas decimais -3,3.3,-2,4,7,..1.
 
 #complex - numeros complexos 1 + 2j
-#--------------------------------------------------------------------------------------------------------------------#
 
+
+#-------------------------------------------------------------------------------------------------------------------------------#
 #VARIAVEIS#
 #o python difere as mesmas variaveis escritas de forma diferente, mauiscula minuscula = altura, Altura, ALTURA
 #de A-Z, 0-9
@@ -1121,6 +1181,7 @@ x = m + j
 print(x)
 #x = w + m # não vai, pois o python não junta um nome com um numero int. por ser uma linguagem com uma tipagem dinamica]
 
+
 #--------------------------------------------------------------------------------------------------------------------#
 ##metodos estrings## strings = texto
 
@@ -1142,6 +1203,7 @@ d = " mundo"
 l = j+d #l = j + "" + d  , assim tambem vai
 print(l)
 
+
 #--------------------------------------------------------------------------------------------------------------------#
 #Type(descobrir o tipo de dados armazenados na variavel )
 i = "ola mundo"
@@ -1153,6 +1215,7 @@ print(type(i))
 print(type(o))
 print(type(y))
 print(type(s))
+
 
 #--------------------------------------------------------------------------------------------------------------------#
 #CASTING# converte tipos de dados numericos e de textos para outros dados numericos e de textos
@@ -1183,6 +1246,8 @@ n =  str (2.3)
 print("a vriavel p e do tipo:",type(p))
 print("a vriavel r e do tipo:",type(r))
 print("a vriavel n e do tipo:",type(n))
+
+
 #--------------------------------------------------------------------------------------------------------------------#
 #função ABS: vai retonar um número absoluto;
 print(abs(-15))
@@ -1212,6 +1277,8 @@ print(pow(3,3))
 #print(math.floor()): arredondamento para baixo;
 #print(math.ceil()): arredondamento para cima;
 #print(math.sqrt()): função de raiz
+
+
 #--------------------------------------------------------------------------------------------------------------------#
 #Manipulação de Variáveis
 # Operações Matemáticas, Operações Matemáticas e Aritméticas:
@@ -1229,7 +1296,10 @@ print("Multiplicação:", multiplicacao)
 print("Divisão:", divisao)
 print("Resto:", resto)
 print("Potência:", potencia)
-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------
 #Tuplas, dicionários e sets
 dias_da_semana = ("segunda","terça","quarta")
 print(type(dias_da_semana))
@@ -1253,7 +1323,10 @@ print(pessoa.values())
 #são frequentementes utilizados para remover duplicatas de uma lista ou para fazer operações matemáticas como união ou interseção
 conjunto= {"branco","roxo","preto"}
 print(type(conjunto))
---------------------------------------------------------------------------------------------------------
+
+
+
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 """exemplo básico de uma arquitetura de rede neural profunda em Python usando a biblioteca TensorFlow, uma das mais populares para desenvolvimento de redes neurais. Este exemplo demonstrará uma rede neural simples com uma camada de entrada, uma camada oculta e uma camada de saída, utilizando o framework Keras, que é uma API de alto nível integrada ao TensorFlow.
 Vamos criar uma rede neural para classificar imagens da base de dados MNIST, que consiste em dígitos escritos à mão.
 Este código cria e treina uma rede neural simples para classificação de dígitos manuscritos do conjunto de dados MNIST. A rede tem uma camada de entrada que achatada as imagens 28x28 em um vetor unidimensional, uma camada oculta com 128 neurônios e ativação ReLU, e uma camada de saída com 10 neurônios (um para cada dígito) e ativação softmax. O modelo é treinado por 10 épocas usando o otimizador Adam e a função de perda entropia cruzada categórica esparsa. Finalmente, a acurácia do modelo é avaliada com os dados de teste e um gráfico da acurácia ao longo das épocas é plotado.
@@ -1297,7 +1370,9 @@ plt.ylim([0, 1])
 plt.legend(loc='lower right')
 plt.show()
 
----------------------------------------------------------------------------------------------------------------------------------
+
+
+#---------------------------------------------------------------------------------------------------------------------------------
 O conjunto de dados Iris é um clássico na aprendizagem de máquina e consiste em três classes de flores Iris (Setosa, Versicolour e Virginica), 
 com quatro características (comprimento e largura das sépalas e pétalas).
 O conjunto de dados Iris é um dos mais famosos e utilizados na área de aprendizado de máquina. Criado por Ronald Fisher em 1936, ele contém 150 amostras de flores de três espécies de Iris (Iris setosa, Iris virginica e Iris versicolor). Cada amostra é descrita por quatro atributos: comprimento e largura das sépalas e das pétalas.
@@ -1353,10 +1428,6 @@ Ele cobre os passos essenciais desde a importação das bibliotecas, carregament
 Este é um ponto de partida útil para explorar técnicas mais avançadas de machine learning usando scikit-learn.
 
 
-
-
-
-
 # Importar bibliotecas necessárias
 from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
@@ -1388,7 +1459,9 @@ print(f"Acurácia do modelo: {accuracy * 100:.2f}%")
 print("Relatório de Classificação:")
 print(report)
 
-________________________________________________________________________________________
+
+
+#---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 O Random Forest é um poderoso algoritmo de aprendizado de máquina baseado no conceito de ensemble learning, que combina múltiplos modelos para melhorar a precisão e a robustez da previsão. Ele é amplamente utilizado tanto para problemas de classificação quanto de regressão.
 
 Conceitos Fundamentais do Random Forest
@@ -1454,7 +1527,9 @@ print(f"Acurácia do modelo: {accuracy * 100:.2f}%")
 print("Relatório de Classificação:")
 print(report)
 
---------------------------------------------------------------------------------------------------------------------------
+
+
+#--------------------------------------------------------------------------------------------------------------------------
 """ versão do Jogo da cobrinha 
 1. Estrutura Geral do Código
 O código está dividido em três partes principais:
@@ -1895,7 +1970,9 @@ Você pode expandir esse código adicionando novas funcionalidades, ajustando a 
 </body>
 </html>
 
------------------------------------------------------------------------------------------------------------
+
+
+#-----------------------------------------------------------------------------------------------------------
 #testando Datas setes
 
 import pandas as pd
@@ -1943,7 +2020,9 @@ y = 5 - 5*x**2 # aqui vc altera a função
 plt.plot(x, y)
 plt.show()
 
-------------------------------------------------------------------------------------------
+
+
+#------------------------------------------------------------------------------------------
 #Teorema de Pitagoras
 #c2 = a2 + b2 # a hipotenusa é o lado mais longo
 
@@ -1963,4 +2042,8 @@ def area_of_triangle(a, b, c):
 
 
 print(area_of_triangle(1., 1., 2. ** .5))
+
+
+
+#---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
