@@ -7,14 +7,11 @@ Ele é formado a partir de uma fórmula relativamente simples: \( z_{n+1} = z_n^
 O objetivo é analisar o comportamento da sequência gerada por essa equação, variando o valor de \( c \). Se essa sequência permanecer limitada, ou seja, não tender ao infinito mesmo após muitas iterações, o valor de \( c \) pertence ao Conjunto de Mandelbrot. 
 Caso contrário, ele é excluído do conjunto. O resultado gráfico desse processo é uma imagem complexa e altamente detalhada, com uma estrutura que se repete em diferentes escalas, característica dos fractais. 
 Essa figura não só é esteticamente impressionante, mas também revela propriedades matemáticas profundas sobre estabilidade e caos, sendo amplamente estudada em áreas como sistemas dinâmicos, computação gráfica e teoria do caos.
-## Descrição
 
 O Conjunto de Mandelbrot é definido pela iteração da fórmula:
-
 \[
 z_{n+1} = z_n^2 + c, \quad \text{com } z_0 = 0,
 \]
-
 onde **c** é um número complexo. Um ponto \( c \) pertence ao conjunto se, após repetidas iterações, a sequência \(\{z_n\}\) permanecer limitada (não divergir para o infinito). 
 O código gera uma grade de números complexos e, para cada ponto, aplica a iteração para determinar se ele diverge ou não, colorindo-o de acordo com o número de iterações necessárias para atingir um critério de divergência (quando \(|z| > 2\)).
 
