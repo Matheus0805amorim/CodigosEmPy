@@ -1,0 +1,489 @@
+""" versão do Jogo da cobrinha 
+1. Estrutura Geral do Código
+O código está dividido em três partes principais:
+
+HTML: Define a estrutura da página e cria o elemento <canvas> onde o jogo será renderizado.
+CSS: Responsável pela estilização da página e do canvas (área do jogo).
+JavaScript: Contém a lógica do jogo, incluindo movimentação da cobrinha, geração da comida, detecção de colisões e a atualização/representação gráfica do jogo.
+2. HTML
+html
+Copiar
+Editar
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jogo da Cobrinha</title>
+  <style>
+    /* Estilos em CSS (explicados na seção de CSS) */
+    body {
+      background-color: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    canvas {
+      background-color: #000;
+      display: block;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+  </style>
+</head>
+<body>
+  <!-- Elemento canvas onde o jogo é desenhado -->
+  <canvas id="game" width="400" height="400"></canvas>
+
+  <script>
+    // Código JavaScript (detalhado a seguir)
+  </script>
+</body>
+</html>
+O que cada parte faz:
+<!DOCTYPE html>: Informa ao navegador que estamos utilizando HTML5.
+<html lang="pt-BR">: Define que o idioma da página é o português do Brasil.
+<head>: Contém metadados, o título da página e o bloco de estilos (CSS).
+<body>: Inclui o <canvas> (área do jogo) e o bloco <script> com a lógica em JavaScript.
+3. CSS
+Dentro da tag <style>, temos os seguintes estilos:
+
+css
+Copiar
+Editar
+body {
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+canvas {
+  background-color: #000;
+  display: block;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+Explicação dos estilos:
+body:
+
+background-color: #f0f0f0; – Define um fundo cinza claro para a página.
+display: flex; justify-content: center; align-items: center; – Utiliza Flexbox para centralizar o conteúdo (o canvas) tanto na horizontal quanto na vertical.
+height: 100vh; – Faz com que o corpo ocupe 100% da altura da viewport.
+margin: 0; – Remove margens padrão para garantir o alinhamento correto.
+canvas:
+
+background-color: #000; – Define o fundo preto para a área do jogo.
+display: block; – Garante que o canvas seja exibido como um bloco.
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); – Adiciona uma sombra ao redor do canvas para destacá-lo visualmente.
+4. JavaScript
+Todo o comportamento do jogo está implementado dentro do <script>. Vamos analisar cada parte:
+
+a) Seleção do Canvas e Contexto de Desenho
+javascript
+Copiar
+Editar
+const canvas = document.getElementById('game');
+const ctx = canvas.getContext('2d');
+canvas: Seleciona o elemento <canvas> pelo seu id ("game").
+ctx: Obtém o contexto 2D do canvas, que é utilizado para desenhar formas, retângulos e controlar a renderização do jogo.
+b) Variáveis e Configurações Iniciais
+javascript
+Copiar
+Editar
+const gridSize = 20;
+const tileCount = canvas.width / gridSize;
+
+let snake = [{ x: 10, y: 10 }]; // A cobrinha começa com a cabeça na posição (10, 10)
+let snakeLength = 3;            // Tamanho inicial da cobrinha (3 segmentos)
+let dx = 0;                     // Movimento horizontal (inicialmente parado)
+let dy = 0;                     // Movimento vertical (inicialmente parado)
+let food = { x: 5, y: 5 };       // Posição inicial da comida
+gridSize: Define o tamanho de cada célula (ou “tile”) da grade em 20 pixels.
+tileCount: Calcula quantas células cabem na largura (ou altura) do canvas. Com um canvas de 400 pixels, teremos 20 células (400/20).
+snake: Um array que representa os segmentos da cobrinha. Inicialmente, a cobrinha possui apenas a cabeça na posição (10, 10).
+snakeLength: Define quantos segmentos a cobrinha terá. Conforme ela come a comida, esse valor é incrementado.
+dx e dy: Determinam a direção do movimento da cobrinha. Começam com 0, ou seja, a cobrinha está parada.
+food: Representa a posição da comida na grade.
+c) Função para Gerar Nova Comida
+javascript
+Copiar
+Editar
+function newFood() {
+  food.x = Math.floor(Math.random() * tileCount);
+  food.y = Math.floor(Math.random() * tileCount);
+}
+Objetivo: Gera uma nova posição aleatória para a comida.
+Como funciona:
+Math.random() * tileCount gera um número aleatório entre 0 e tileCount.
+Math.floor() arredonda esse número para baixo, garantindo que a posição seja um número inteiro dentro dos limites da grade.
+d) Função de Atualização do Jogo (update)
+javascript
+Copiar
+Editar
+function update() {
+  // Calcula a nova posição da cabeça com base na direção atual
+  const head = { x: snake[0].x + dx, y: snake[0].y + dy };
+
+  // Verifica colisão com as paredes
+  if (head.x < 0 || head.x >= tileCount || head.y < 0 || head.y >= tileCount) {
+    resetGame();
+    return;
+  }
+
+  // Verifica colisão com o próprio corpo
+  for (let segment of snake) {
+    if (head.x === segment.x && head.y === segment.y) {
+      resetGame();
+      return;
+    }
+  }
+
+  // Adiciona a nova cabeça no início do array da cobrinha
+  snake.unshift(head);
+
+  // Verifica se a cobrinha comeu a comida
+  if (head.x === food.x && head.y === food.y) {
+    snakeLength++;
+    newFood();
+  }
+
+  // Remove o último segmento se a cobrinha tiver mais segmentos do que o tamanho permitido
+  while (snake.length > snakeLength) {
+    snake.pop();
+  }
+}
+Explicação detalhada:
+Movimento da Cabeça:
+
+Calcula a nova posição da cabeça somando os valores de dx e dy à posição atual.
+Colisão com as Paredes:
+
+Se a nova posição da cabeça estiver fora dos limites da grade (menos que 0 ou maior/igual a tileCount), significa que a cobrinha colidiu com a parede. Nesse caso, o jogo é reiniciado pela função resetGame().
+Colisão com o Próprio Corpo:
+
+Percorre todos os segmentos da cobrinha e, se a nova posição da cabeça coincidir com qualquer segmento, isso indica uma colisão consigo mesma. O jogo é reiniciado.
+Atualização da Cobrinha:
+
+Se não houve colisões, adiciona a nova posição da cabeça no início do array snake usando unshift().
+Verificação de Consumo da Comida:
+
+Se a posição da cabeça for a mesma da comida, a cobrinha cresce (incrementa snakeLength) e uma nova posição para a comida é gerada.
+Manutenção do Tamanho:
+
+Se o número de segmentos da cobrinha exceder snakeLength, os segmentos excedentes são removidos com pop(), mantendo o tamanho correto.
+e) Função de Desenho do Jogo (draw)
+javascript
+Copiar
+Editar
+function draw() {
+  // Limpa o canvas preenchendo-o com a cor preta
+  ctx.fillStyle = '#000';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  // Desenha a comida (em vermelho)
+  ctx.fillStyle = '#ff0000';
+  ctx.fillRect(food.x * gridSize, food.y * gridSize, gridSize - 2, gridSize - 2);
+
+  // Desenha cada segmento da cobrinha (em verde)
+  ctx.fillStyle = '#00ff00';
+  for (let segment of snake) {
+    ctx.fillRect(segment.x * gridSize, segment.y * gridSize, gridSize - 2, gridSize - 2);
+  }
+}
+Pontos importantes:
+Limpeza do Canvas:
+
+Antes de desenhar a nova posição da cobrinha e da comida, o canvas é limpo preenchendo-o com um retângulo preto que cobre toda a área.
+Desenho da Comida:
+
+A comida é desenhada em vermelho. As coordenadas da comida (definidas na grade) são convertidas para pixels multiplicando pelo gridSize.
+Desenho da Cobrinha:
+
+Cada segmento da cobrinha é desenhado em verde. O laço for percorre o array snake e desenha um retângulo para cada segmento.
+O uso de gridSize - 2 deixa um pequeno espaço entre as células, criando um efeito visual agradável.
+f) Função para Reiniciar o Jogo (resetGame)
+javascript
+Copiar
+Editar
+function resetGame() {
+  snake = [{ x: 10, y: 10 }];
+  snakeLength = 3;
+  dx = 0;
+  dy = 0;
+  newFood();
+}
+Objetivo: Quando ocorre uma colisão (com a parede ou com o próprio corpo), o jogo é reiniciado.
+O que faz:
+Reseta a posição da cobrinha para a posição inicial.
+Restaura o tamanho da cobrinha para 3 segmentos.
+Zera a direção do movimento (dx e dy).
+Gera uma nova posição para a comida.
+g) Loop Principal do Jogo (gameLoop)
+javascript
+Copiar
+Editar
+function gameLoop() {
+  update();
+  draw();
+  // Chama novamente o gameLoop após 100ms, controlando a velocidade do jogo
+  setTimeout(gameLoop, 100);
+}
+Objetivo: Manter o jogo em execução contínua.
+Como funciona:
+Em cada iteração, a função update() atualiza a lógica (movimento, colisões, consumo da comida) e draw() redesenha o canvas.
+setTimeout chama novamente gameLoop após 100 milissegundos, definindo a velocidade do jogo.
+h) Captura de Eventos do Teclado
+javascript
+Copiar
+Editar
+document.addEventListener('keydown', function(e) {
+  switch(e.key) {
+    case 'ArrowUp':
+      if (dy === 1) break; // Impede movimento oposto (se estiver descendo, não pode subir imediatamente)
+      dx = 0;
+      dy = -1;
+      break;
+    case 'ArrowDown':
+      if (dy === -1) break;
+      dx = 0;
+      dy = 1;
+      break;
+    case 'ArrowLeft':
+      if (dx === 1) break;
+      dx = -1;
+      dy = 0;
+      break;
+    case 'ArrowRight':
+      if (dx === -1) break;
+      dx = 1;
+      dy = 0;
+      break;
+  }
+});
+Objetivo: Permitir que o jogador controle a direção da cobrinha.
+Como funciona:
+Um event listener é adicionado para o evento keydown. Cada vez que uma tecla é pressionada, a função anônima verifica qual tecla foi.
+Se uma das setas (ArrowUp, ArrowDown, ArrowLeft, ArrowRight) for pressionada, os valores de dx e dy são atualizados para mudar a direção do movimento.
+Há uma verificação para evitar que a cobrinha se mova na direção oposta instantaneamente (por exemplo, de para baixo para para cima), o que poderia causar uma colisão imediata.
+i) Inicialização do Jogo
+javascript
+Copiar
+Editar
+newFood();
+gameLoop();
+Objetivo: Configurar e iniciar o jogo.
+Como funciona:
+A função newFood() é chamada para definir a posição inicial da comida.
+Em seguida, gameLoop() inicia o loop principal do jogo, fazendo com que a lógica e o desenho sejam atualizados periodicamente.
+Conclusão
+Esse código cria um jogo simples da cobrinha onde:
+
+O HTML define a estrutura da página e o canvas para o jogo.
+O CSS cuida da apresentação, centralizando o canvas e definindo suas cores e efeitos.
+O JavaScript implementa toda a lógica do jogo: desde a movimentação da cobrinha, detecção de colisões e consumo da comida, até o redesenho contínuo do canvas.
+Você pode expandir esse código adicionando novas funcionalidades, ajustando a velocidade do jogo, ou modificando a aparência dos elementos. Esse exemplo serve como uma ótima base para entender como integrar HTML, CSS e JavaScript na criação de jogos simples para a web.
+
+
+
+##jogo da cobrinha
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jogo da Cobrinha</title>
+  <style>
+    /* Estilização básica para centralizar o canvas na página */
+    body {
+      background-color: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    canvas {
+      background-color: #000;
+      display: block;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+  </style>
+</head>
+<body>
+  <!-- Canvas onde o jogo será desenhado -->
+  <canvas id="game" width="400" height="400"></canvas>
+
+  <script>
+    // Seleciona o canvas e define o contexto 2D para desenhar
+    const canvas = document.getElementById('game');
+    const ctx = canvas.getContext('2d');
+
+    // Tamanho da grade e número de células
+    const gridSize = 20;
+    const tileCount = canvas.width / gridSize;
+
+    // Estado inicial da cobrinha e da comida
+    let snake = [{ x: 10, y: 10 }]; // posição inicial da cabeça
+    let snakeLength = 3;            // tamanho inicial da cobrinha
+    let dx = 0;                     // velocidade na direção x
+    let dy = 0;                     // velocidade na direção y
+    let food = { x: 5, y: 5 };       // posição inicial da comida
+
+    // Função para gerar uma nova posição para a comida aleatoriamente
+    function newFood() {
+      food.x = Math.floor(Math.random() * tileCount);
+      food.y = Math.floor(Math.random() * tileCount);
+    }
+
+    // Função que atualiza o estado do jogo (posição da cobrinha, verificação de colisões, etc.)
+    function update() {
+      // Calcula a nova posição da cabeça com base na direção atual
+      const head = { x: snake[0].x + dx, y: snake[0].y + dy };
+
+      // Verifica colisão com as paredes (se a cabeça sair do canvas, o jogo é reiniciado)
+      if (head.x < 0 || head.x >= tileCount || head.y < 0 || head.y >= tileCount) {
+        resetGame();
+        return;
+      }
+
+      // Verifica colisão com o próprio corpo
+      for (let segment of snake) {
+        if (head.x === segment.x && head.y === segment.y) {
+          resetGame();
+          return;
+        }
+      }
+
+      // Adiciona a nova cabeça no início do array da cobrinha
+      snake.unshift(head);
+
+      // Verifica se a cobrinha comeu a comida
+      if (head.x === food.x && head.y === food.y) {
+        snakeLength++;
+        newFood();
+      }
+
+      // Remove o último segmento se a cobrinha estiver maior que o tamanho permitido
+      while (snake.length > snakeLength) {
+        snake.pop();
+      }
+    }
+
+    // Função que desenha o jogo: a cobrinha e a comida
+    function draw() {
+      // Limpa o canvas
+      ctx.fillStyle = '#000';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Desenha a comida (em vermelho)
+      ctx.fillStyle = '#ff0000';
+      ctx.fillRect(food.x * gridSize, food.y * gridSize, gridSize - 2, gridSize - 2);
+
+      // Desenha cada segmento da cobrinha (em verde)
+      ctx.fillStyle = '#00ff00';
+      for (let segment of snake) {
+        ctx.fillRect(segment.x * gridSize, segment.y * gridSize, gridSize - 2, gridSize - 2);
+      }
+    }
+
+    // Função que reinicia o jogo em caso de colisão
+    function resetGame() {
+      snake = [{ x: 10, y: 10 }];
+      snakeLength = 3;
+      dx = 0;
+      dy = 0;
+      newFood();
+    }
+
+    // Função principal do jogo que é chamada a cada intervalo de tempo
+    function gameLoop() {
+      update();
+      draw();
+      // Chama o gameLoop novamente após 100ms (velocidade do jogo)
+      setTimeout(gameLoop, 100);
+    }
+
+    // Captura eventos de teclado para controlar a direção da cobrinha
+    document.addEventListener('keydown', function(e) {
+      switch(e.key) {
+        case 'ArrowUp':
+          if (dy === 1) break; // Impede movimento inverso
+          dx = 0;
+          dy = -1;
+          break;
+        case 'ArrowDown':
+          if (dy === -1) break;
+          dx = 0;
+          dy = 1;
+          break;
+        case 'ArrowLeft':
+          if (dx === 1) break;
+          dx = -1;
+          dy = 0;
+          break;
+        case 'ArrowRight':
+          if (dx === -1) break;
+          dx = 1;
+          dy = 0;
+          break;
+      }
+    });
+
+    // Inicia o jogo
+    newFood();
+    gameLoop();
+  </script>
+</body>
+</html>
+
+
+
+#-----------------------------------------------------------------------------------------------------------
+#testando Datas setes
+
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+iris=sns.load_dataset("iris")#data sete de flores bom para testes
+print(iris)
+
+iris[iris["species"]=="virginica"]
+
+iris.groupby("species").mean()
+
+iris.head()
+
+sns.histplot(data=iris, x="sepal_length")#vai gerafico de frequências dos valores continuos, como estão distribuidos
+
+for col in iris.drop(columns="species"):
+  sns.histplot(data=iris, x=col, hue="species")
+  plt.show()
+
+sns.pairplot(data=iris, hue="species")
+plt.show()
+
+"""""""""""""""""""
+import numpy as np
+import matplotlib.pyplot as plt
+
+fig= plt.figure(figsize= (8, 5))
+plt.title("função linear")
+
+x = np.linspace(-10, 10, 1000)
+y = 5 + 2*x  # aqui vc altera a função
+
+plt.plot(x, y)
+plt.show()
+
+
+fig= plt.figure(figsize= (8, 5))
+plt.title("função de segundo grau")# calcular a gravidade de um objeto caindo, a maça de newtton
+
+x = np.linspace(0, 5, 1000)#tempo
+y = 5 - 5*x**2 # aqui vc altera a função
+
+plt.plot(x, y)
+plt.show()
