@@ -1,4 +1,4 @@
-Introdução ao python
+#Introdução ao python
 
 História: O python foi criada por Guido van rossum.É uma linguagem de alto nivel e código aberto. De facil legibilidade, amplamente usada, para ciências de dados, automação etc.
 
@@ -12,7 +12,7 @@ slicing permite obter partes de uma string, começa em 0 sempre. ex frase = "dia
 
 Operador is para verificar se duas variaveis se referem ao mesma posição na memoria x =[1,2,3] y = x print(x is y) ---> True
 
-
+```
 ------------------------------------------------------------------
 The Zen of Python, por Tim Peters
 
