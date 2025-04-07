@@ -1,8 +1,8 @@
-Introdução ao python
+#Introdução ao python
 
 História: O python foi criada por Guido van rossum.É uma linguagem de alto nivel e código aberto. De facil legibilidade, amplamente usada, para ciências de dados, automação etc.
 
-Sintaxe
+#Sintaxe
 
 O py usa a indentação para definir seus blocos de códigos, diferente de algumas outras longuagens que usam chaves. Não há a necessidade de declarar variaveis, pois a sua tipagem é dinâmica(fracamente tipada) variavel São usadas para armazenar dados ex--- nome = "pedro"
 
@@ -12,11 +12,11 @@ slicing permite obter partes de uma string, começa em 0 sempre. ex frase = "dia
 
 Operador is para verificar se duas variaveis se referem ao mesma posição na memoria x =[1,2,3] y = x print(x is y) ---> True
 
+```
 
-------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------------------------------------------------------------------------
 The Zen of Python, por Tim Peters
-
-
 
 Bonito é melhor que feio.
 
@@ -55,8 +55,10 @@ Se a implementação é difícil de explicar, é uma má idéia.
 Se a implementação é fácil de explicar, pode ser uma boa idéia.
 
 Namespaces são uma grande idéia -- vamos fazer mais dessas!
-___________________________________________________________________________________________________________________
---------------------------------------------------------------------------------------------------------------------
+
+
+
+#--------------------------------------------------------------------------------------------------------------------
 ### Declarando uma variável bool
 esta_chovendo = False
 
@@ -65,7 +67,10 @@ if esta_chovendo:
     print("Leve um guarda-chuva!")
 else:
     print("O dia está lindo!")
-#########################################################################################################
+
+
+
+#-------------------------------------------------------------------------------------------------------------------------------------------------
 # Verificando se um número é par
 
 numero = input("Digite um número: ")
@@ -76,8 +81,10 @@ if é_par:
     print(numero, "é um número par.")
 else:
     print(numero, "é um número ímpar.")
-########################################################################################################################
 
+
+
+#-------------------------------------------------------------------------------------------------------------------------------------------------
 Controle de acesso
 
 tem_acesso = False
@@ -86,165 +93,28 @@ if tem_acesso:
 else:
     print("Acesso negado.")
 
-__________________________________________________________________________________________________________________
--------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+#-------------------------------------------------------------------------------------------------------------------------------------------------
 frutas = ['tomate','maçã','morango','banana','melão']
 frutas.append('pimenta')
 print(frutas)
-____________________________________________________________________________________________________________________________________________________
-----------------------------------------------------------------------------------------------------------------------------
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------
 #.append() vai adicionar um valor ao final da lista
 listNum = [75, 93, 25, 17, 42]
 listNum.append(55)
 
 print(listNum)
 
-____________________________________________________________________________________________________________________________________________________
-----------------------------------------------------------------------------------------------------------------
-O que é um modelo de linguagem ampla (LLM)?
-Um modelo de linguagem grande (LLM) é um tipo de programa de inteligência artificial (IA) que pode reconhecer e gerar texto, entre outras tarefas. Os LLMs são treinados em enormes conjuntos de dados — daí o nome "grande". Os LLMs são baseados em aprendizado de máquina: especificamente, um tipo de rede neural chamada de modelo transformer.
 
-Em termos mais simples, um LLM é um programa de computador que recebeu exemplos suficientes para poder reconhecer e interpretar a linguagem humana ou outros tipos de dados complexos. Muitos LLMs são treinados em dados coletados na internet, milhares ou milhões de gigabytes de texto. Mas a qualidade das amostras afeta o nível de aprendizado de linguagem natural dos LLMs, de modo que os programadores de um LLM podem usar um conjunto de dados mais selecionado.
-
-Os LLMs usam um tipo de aprendizado de máquina chamado aprendizado profundo para entender como os caracteres, palavras e frases funcionam juntos. O aprendizado profundo envolve a análise probabilística de dados não estruturados, o que acaba permitindo que o modelo de aprendizado profundo reconheça distinções entre partes do conteúdo sem intervenção humana.
-
-LLMs são então ainda mais treinados por meio de ajustes: eles são ajustados finamente ou ajustados a partir de prompts para a tarefa específica que o programador deseja que eles realizem, como interpretar perguntas e gerar respostas, ou traduzir texto de um idioma para outro
-
-
-###Modelo de LLm para Assistente Virtual para Atendimento ao Cliente em E-commerce###
-#1. Definir os Requisitos do Projeto
-Objetivos:
-
-Ajudar os clientes a navegar e encontrar produtos.
-Responder perguntas frequentes sobre produtos, políticas de devolução, métodos de pagamento, etc.
-Assistir no rastreamento de pedidos.
-Processar solicitações de devolução e reembolso.
-Funcionalidades:
-
-Interface de chat amigável.
-Respostas rápidas e precisas.
-Integração com sistemas de inventário e pedidos.
-
-#2. Escolher o Modelo de LLM
-Utilizaremos um modelo pré-treinado, como o GPT-3 ou GPT-4, disponível através da API da OpenAI.
-
-#3. Preparar o Ambiente de Desenvolvimento
-Linguagem e Ferramentas:
-
-Python
-Bibliotecas: openai, flask para a API web, requests para chamadas de API, etc.
-#4. Criar o Backend
-Configuração do OpenAI:
-Instale a biblioteca openai e configure-a com a sua chave de API.
-
-***Codigos*****
-pip install openai flask requests
-
-import openai
-
-# Configure sua chave de API
-openai.api_key = 'sua-chave-api'
-
-#Desenvolver a API Flask:
-
-from flask import Flask, request, jsonify
-
-app = Flask(__name__)
-
-@app.route('/chatbot', methods=['POST'])
-def chatbot():
-    user_message = request.json.get('message')
-    response = openai.Completion.create(
-        engine="text-davinci-003",
-        prompt=user_message,
-        max_tokens=150
-    )
-    return jsonify({'response': response.choices[0].text.strip()})
-
-if __name__ == '__main__':
-    app.run(port=5000)
-
-
-#5. Treinamento e Ajuste do Modelo
-Utilize prompts específicos para ajustar o modelo ao contexto de e-commerce. 
-Vamos fornecer alguns exemplos para guiar o comportamento do modelo.
-
-***codigo***
-def generate_prompt(user_message):
-    return f"""Você é um assistente virtual para uma loja online. Ajude os clientes com suas perguntas da maneira mais eficiente possível.
-
-Cliente: "Como posso rastrear meu pedido?"
-Assistente: "Para rastrear seu pedido, por favor, acesse o link de rastreamento enviado no seu e-mail de confirmação de envio ou entre em contato com nosso suporte com seu número de pedido."
-Cliente: "{user_message}"
-Assistente:
-"""
-
-def chatbot_response(user_message):
-    prompt = generate_prompt(user_message)
-    response = openai.Completion.create(
-        engine="text-davinci-003",
-        prompt=prompt,
-        max_tokens=150
-    )
-    return response.choices[0].text.strip()
-
-##Integre essa lógica na função chatbot do Flask.
-
-#6. Testar e Refinar
-Teste o assistente virtual com várias perguntas comuns para garantir que ele responde de maneira apropriada e eficiente.
-
-#7. Implementação da Interface do Usuário
-Desenvolva uma interface de chat amigável onde os clientes possam interagir com o assistente virtual. Isso pode ser feito utilizando HTML, CSS e JavaScript.
-
-#Exemplo de Interface Simples em HTML/JS:
-
-**codigo **
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Chatbot E-commerce</title>
-    <style>
-        body { font-family: Arial, sans-serif; }
-        #chatbox { width: 400px; height: 500px; border: 1px solid #ccc; padding: 10px; overflow-y: scroll; }
-        #userInput { width: 80%; padding: 10px; }
-        #sendButton { width: 15%; padding: 10px; }
-    </style>
-</head>
-<body>
-    <h1>Assistente Virtual E-commerce</h1>
-    <div id="chatbox"></div>
-    <input type="text" id="userInput" placeholder="Digite sua mensagem..."/>
-    <button id="sendButton">Enviar</button>
-
-    <script>
-        document.getElementById('sendButton').onclick = async function() {
-            let userMessage = document.getElementById('userInput').value;
-            let chatbox = document.getElementById('chatbox');
-            chatbox.innerHTML += `<p><strong>Você:</strong> ${userMessage}</p>`;
-            let response = await fetch('/chatbot', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ message: userMessage })
-            });
-            let result = await response.json();
-            chatbox.innerHTML += `<p><strong>Assistente:</strong> ${result.response}</p>`;
-        }
-    </script>
-</body>
-</html>
-
-#8. Implementação e Escalabilidade
-Hospedagem: Use serviços como AWS, Google Cloud ou Heroku para hospedar seu aplicativo.
-Segurança: Garanta a segurança dos dados dos clientes e implemente autenticação adequada.
-Escalabilidade: Prepare seu aplicativo para lidar com um grande número de usuários simultâneos.
-
-#Conclusão
-Este projeto exemplifica como criar um assistente virtual utilizando um modelo de linguagem ampla para um contexto real de e-commerce. 
-O processo envolve a definição dos requisitos, escolha do modelo, desenvolvimento da API backend, treinamento e ajuste do modelo, testes, desenvolvimento da interface do usuário, 
-e a implementação final. Com ajustes adequados e testes contínuos, este assistente pode fornecer um suporte eficiente e melhorar significativamente a experiência do cliente.
 
 ____________________________________________________________________________________________________________________________________________________
------------------------------------------------------------------------------------------------------------------
+#----------------------------------------------------------------------------------------------------------------
+
+#-----------------------------------------------------------------------------------------------------------------
 
 """O código cria um dicionário chamado x que mapeia strings para inteiros. Este dicionário tem três chaves ("a", "b" e "c"), e cada uma delas está mapeada para o valor inteiro 5. Em seguida, o código imprime o resultado da função len() aplicada ao dicionário x.
 
@@ -254,29 +124,29 @@ Portanto, a saída do código será: 3, Isso indica que o dicionário x tem trê
 x: dict[str, int] = { "a": 5,"b": 5,"c":5}
 print(len(x))
 
-____________________________________________________________________________________________________________________________________________________
-----------------------------------------------------------------------------------------------------------------------------
+
+#----------------------------------------------------------------------------------------------------------------------------
 fruits = ['orange', 'apple', 'pear', 'banana', 'kiwi', 'apple', 'banana']
 fruits.count('apple')
 
-____________________________________________________________________________________________________________________________________________________
-----------------------------------------------------------------------------------------------------------------------------
+
+#----------------------------------------------------------------------------------------------------------------------------
 L1 = [2, 3, 8, 10]
 L2 = [1, 0, 56, 29]
 L3 = L1 + L2
 
 print(L3)
 
-____________________________________________________________________________________________________________________________________________________
----------------------
+
+#----------------------------------------------------------------------------------------------------------------------------
 L1 = [2, 3, 8, 10]
 L2 = L1
 L2[1] = 5
 L2[2] = 5
 print( L1 )
 
-____________________________________________________________________________________________________________________________________________________
-----------------------------------------------------------------------------------------------------------------------------
+
+#----------------------------------------------------------------------------------------------------------------------------
 """atividade O código inicial tem uma variável chamada "soma" inicializada com 0. Em seguida, há um loop "for" que itera sobre os valores de "i" no intervalo de 1 a 4 (ou seja, 1, 2, 3, 4). Dentro do loop, a cada iteração, a variável "soma" é incrementada em 1. Finalmente, o valor de "soma" é impresso.
 Então, a saída desse código será 4, pois ele realiza a adição de 1 à variável "soma" quatro vezes (uma vez para cada valor de "i" no intervalo de 1 a 4).
 Aqui está o código corrigido para somar os valores de 1 a 4. o código adiciona o valor de "i" à variável "soma" a cada iteração, o que resultará na soma de todos os valores de 1 a 4, resultando em 10.:"""
@@ -285,8 +155,9 @@ for i in range(1, 5):
     soma += i
 print(soma)
 
-____________________________________________________________________________________________________________________________________________________
-----------------------------------------------------------------------------------------------------------------------------
+
+
+#----------------------------------------------------------------------------------------------------------------------------
 fruits = ['orange', 'apple', 'pear', 'banana', 'kiwi', 'apple', 'banana']
 #fruits.count('apple')
 #fruits.count('tangerine')
@@ -295,8 +166,9 @@ fruits = ['orange', 'apple', 'pear', 'banana', 'kiwi', 'apple', 'banana']
 fruits.append('grape')
 print(fruits.append('grape'))
 
-____________________________________________________________________________________________________________________________________________________
------------------------------------------------------------------------------------------------------------------------------
+
+
+#-----------------------------------------------------------------------------------------------------------------------------
 """
 Este é um exemplo de função em Python chamada `calc`. A função recebe dois parâmetros, `a` e `b`, onde `b` tem um valor padrão de 2 caso não seja fornecido explicitamente. Dentro da função, ela multiplica `a` e `b`, armazena o resultado em `result` e o imprime.
 
@@ -313,180 +185,13 @@ def calc(a, b=2):
 
 calc(a=2, b=5)
 
-____________________________________________________________________________________________________________________________________________________
------------------------------------------------------------------------------------------------------------------------------
-#jogo do ping pong
 
-========================================================================
-                            DOCUMENTAÇÃO
-                              JOGO PONG
-========================================================================
 
-1. Introdução:
-   O jogo Pong é um clone simples do clássico jogo de arcade Pong. Neste
-   jogo, dois jogadores controlam barras retangulares que se movem para 
-   cima e para baixo, tentando rebater uma bola em direção ao adversário 
-   para marcar pontos. O jogo continua até que um jogador alcance uma 
-   pontuação predefinida ou até que o jogador decida encerrar o jogo.
-
-2. Funcionamento:
-   O jogo Pong é implementado em Python usando a biblioteca Pygame. Abaixo
-   estão os principais componentes e funcionalidades do jogo:
-
-   - Configurações da janela: Define as dimensões da janela do jogo, a taxa
-     de quadros por segundo (FPS) e as cores usadas no jogo.
-
-   - Configurações das barras do jogador: Define as dimensões, velocidade e 
-     posição inicial das barras do jogador.
-
-   - Configurações da bola: Define as dimensões, velocidade e posição inicial
-     da bola.
-
-   - Função reset_ball(): Retorna a posição inicial da bola quando é necessário
-     reiniciar o jogo.
-
-   - Função main(): A função principal do jogo. Aqui, o jogo é inicializado e
-     o loop principal do jogo é executado. Ele trata eventos, atualiza a posição
-     dos objetos do jogo, detecta colisões e desenha os objetos na tela.
-
-   - Movimentação do jogador: O jogador 1 pode mover sua barra para cima com a
-     tecla "W" e para baixo com a tecla "S".
-
-   - Movimentação da bola: A bola se move continuamente pela tela. Quando colide
-     com as paredes ou barras, sua direção é invertida.
-
-   - Colisões: O jogo verifica constantemente se a bola colide com as barras dos
-     jogadores ou com as paredes. Se a bola atingir a barra do jogador, sua direção
-     horizontal é invertida.
-
-   - Desenho na tela: Os objetos do jogo (barras dos jogadores e bola) são desenhados
-     na tela a cada quadro.
-
-   - Encerramento do jogo: O jogo continua em um loop até que o jogador decida fechar
-     a janela do jogo.
-
-3. Execução:
-   Para executar o jogo, basta executar o script Python. Uma janela será aberta 
-   exibindo o jogo. Os jogadores podem controlar suas barras usando as teclas 
-   especificadas no código. O jogo continuará até que o jogador decida fechar a 
-   janela do jogo.
-
-4. Conclusão:
-   Este é um exemplo básico de um jogo Pong implementado em Python usando a biblioteca
-   Pygame. Ele demonstra conceitos fundamentais de desenvolvimento de jogos, como
-   movimentação de objetos, detecção de colisões e manipulação de eventos.
-
-   O código pode ser estendido e modificado para adicionar mais funcionalidades, como
-   efeitos sonoros, pontuação, níveis de dificuldade, entre outros.
-
-____________________________________________________________________________________________________________________________________________________
-========================================================================
+#-----------------------------------------------------------------------------------------------------------------------------
 
 
 
-
-import pygame
-import random
-
-# Inicialização do Pygame
-pygame.init()
-
-# Configurações da janela do jogo
-WIDTH, HEIGHT = 800, 600
-FPS = 60
-WHITE = (255, 255, 255)
-BLACK = (0, 0, 0)
-
-# Configurações da barra do jogador
-PLAYER_WIDTH, PLAYER_HEIGHT = 15, 100
-PLAYER_SPEED = 5
-
-# Configurações da bola
-BALL_WIDTH, BALL_HEIGHT = 15, 15
-BALL_SPEED_X = 5
-BALL_SPEED_Y = 5
-
-# Criação da janela do jogo
-screen = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption("Pong")
-clock = pygame.time.Clock()
-
-# Função para reiniciar a posição da bola
-def reset_ball():
-    return WIDTH // 2 - BALL_WIDTH // 2, HEIGHT // 2 - BALL_HEIGHT // 2
-
-# Função principal do jogo
-def main():
-    # Posição inicial do jogador e da bola
-    player1_y = HEIGHT // 2 - PLAYER_HEIGHT // 2
-    player2_y = HEIGHT // 2 - PLAYER_HEIGHT // 2
-    ball_x, ball_y = reset_ball()
-    ball_dx = BALL_SPEED_X * random.choice((1, -1))
-    ball_dy = BALL_SPEED_Y * random.choice((1, -1))
-
-    # Loop principal do jogo
-    running = True
-    while running:
-        # Eventos do jogo
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = False
-
-        # Movimentação do jogador 1 (esquerda)
-        keys = pygame.key.get_pressed()
-        if keys[pygame.K_w] and player1_y > 0:
-            player1_y -= PLAYER_SPEED
-        if keys[pygame.K_s] and player1_y < HEIGHT - PLAYER_HEIGHT:
-            player1_y += PLAYER_SPEED
-
-        # Movimentação do jogador 2 (direita)
-        if ball_dx > 0:
-            if player2_y + PLAYER_HEIGHT / 2 < ball_y + BALL_HEIGHT / 2:
-                player2_y += PLAYER_SPEED
-            elif player2_y + PLAYER_HEIGHT / 2 > ball_y + BALL_HEIGHT / 2:
-                player2_y -= PLAYER_SPEED
-
-        # Movimentação da bola
-        ball_x += ball_dx
-        ball_y += ball_dy
-
-        # Verifica se a bola colide com a parede superior ou inferior
-        if ball_y <= 0 or ball_y >= HEIGHT - BALL_HEIGHT:
-            ball_dy *= -1
-
-        # Verifica colisão com jogador 1
-        if ball_x <= PLAYER_WIDTH and player1_y < ball_y + BALL_HEIGHT < player1_y + PLAYER_HEIGHT:
-            ball_dx *= -1
-
-        # Verifica colisão com jogador 2
-        if ball_x >= WIDTH - PLAYER_WIDTH - BALL_WIDTH and player2_y < ball_y + BALL_HEIGHT < player2_y + PLAYER_HEIGHT:
-            ball_dx *= -1
-
-        # Verifica se a bola passa pelos limites da tela
-        if ball_x <= 0 or ball_x >= WIDTH - BALL_WIDTH:
-            ball_x, ball_y = reset_ball()
-
-        # Desenha os objetos na tela
-        screen.fill(BLACK)
-        pygame.draw.rect(screen, WHITE, (0, player1_y, PLAYER_WIDTH, PLAYER_HEIGHT))
-        pygame.draw.rect(screen, WHITE, (WIDTH - PLAYER_WIDTH, player2_y, PLAYER_WIDTH, PLAYER_HEIGHT))
-        pygame.draw.ellipse(screen, WHITE, (ball_x, ball_y, BALL_WIDTH, BALL_HEIGHT))
-        pygame.display.flip()
-
-        # Limita a taxa de quadros por segundo
-        clock.tick(FPS)
-
-    # Encerra o Pygame
-    pygame.quit()
-
-if __name__ == "__main__":
-    main()
-A movimentação da barra do jogador 2 (direita) é controlada de forma autônoma, com base na posição da bola. 
-A barra se move para cima se a bola estiver acima do centro da barra e se move para baixo se a bola estiver abaixo do centro da barra. Isso cria um adversário automatizado para o jogador.
-
-
-____________________________________________________________________________________________________________________________________________________
------------------------------------------------------------------------------------------------------------------------------
+#-----------------------------------------------------------------------------------------------------------------------------
 # meteu 85 na posicçao 2 diferente de eu colocar listNum [2] = 85 que vai substituir
 listNum = [75, 93, 25, 17, 42, 93, 93]
 listNum.insert(2, 85)
@@ -497,16 +202,17 @@ print(listNum)
 
 print("o elemento 93 se repete", listNum.count(93), "vezes") # quantos elementos daquele tem na lista
 
-____________________________________________________________________________________________________________________________________________________
--------------------------------------------------------------------------------------------------------------------
+
+
+#-------------------------------------------------------------------------------------------------------------------
 #.remove vai remover da lista o elemento selecionado
 listNum = [75, 93, 25, 17, 42]
 listNum.remove(75)
 
 print(listNum)
 
-____________________________________________________________________________________________________________________________________________________
-------------------------------------------------------------------------------------------------------------------------
+
+#------------------------------------------------------------------------------------------------------------------------
 x = 2
 x *= 5
 print(x)
@@ -528,8 +234,9 @@ squared = map(lambda x: x**2, numbers)
 print(list(squared))  # Output: [1, 4, 9, 16, 25]
 #Embora as funções lambda possam ser úteis em certas situações, é importante notar que elas são limitadas a expressões simples. Se você precisar de uma função mais complexa, é melhor usar a declaração def para definir uma função nomeada.
 
-____________________________________________________________________________________________________________________________________________________
-----------------------------------------------------------------------------------------------------------------------------------
+
+
+#----------------------------------------------------------------------------------------------------------------------------------
 #Numpy é uma biblioteca do py para o processamento cientifico de dados
 #fornece uma estrutura de dados chamada array NumPy qu armazenam dados de forma eficientes
 #realizam operações: matemática, estatisticas e visualização de dados
@@ -566,8 +273,9 @@ ________________________________________________________________________________
 #no jupyter**
 #instalalar o ipykernel
 
-____________________________________________________________________________________________________________________________________________________
---------------------------------------------------------------------------------------------------------------------------------
+
+
+#--------------------------------------------------------------------------------------------------------------------------------
 #solicita dos numeros e mostra a media
 numero_1 = input("Digite o primeiro numero:")
 numero_2 = input("Digite o segundo  numero: ")
@@ -575,17 +283,22 @@ numero_2 = input("Digite o segundo  numero: ")
 resultado = numero_1 + numero_2
 
 print(resultado)
---------------------------------------------------------------------------------------------------------------------------
+
+
+
+#--------------------------------------------------------------------------------------------------------------------------
 lista = [1,2,3,4,5,5]
 lista.remove(5)
 print(lista)
--------------------------
 x =2
 y = 2
 
 resultado= x*y
 print(resultado)
------------------------------------------------------------------------------------------------------------------------------
+
+
+
+#-----------------------------------------------------------------------------------------------------------------------------
 #Funções: blocos de códigos que permitem agrupar conjuntos de instruções que podem ser chamadas quando necessario
 #tipos de funções:
 #Funções nativas: já existente no python, que fornecem ferramentas para trabalhar com operações logicas, matemáticas, texto etc
@@ -621,7 +334,10 @@ valor_2 = float(input("informe o valor 2: "))     #escopo global
 opcao = (input("qual a operação: "))     #escopo global
 resultado = soma_multiplica(valor_1,valor_2, opcao)   #escopo global
 print(resultado)
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+#-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #orientação a objeto
 
 #para o python um objeto é qualquer coisa que armazena um valor, nas lingu não orientadas a objetos variavel é só uma posição de valor
@@ -662,9 +378,11 @@ pessoa3.saudacao()
 print(pessoa1.nome)# acessando o atributo nome
 
 #Herança: é quando uma classe herda atributos e metodos de outras classes
--------------------------------------------------------------------------------------------------------------------------------
+
+
+#-------------------------------------------------------------------------------------------------------------------------------
 #herança:
-#Exerc: sitema de gerenciamneto de de bilblioteca. crie classe para livro, autor e usuario. Permita emprestimo, devolução e busca de livros
+#Exercicio: sitema de gerenciamneto de de bilblioteca. crie classe para livro, autor e usuario. Permita emprestimo, devolução e busca de livros
 
 class Autor():
     def __init__(self,nome):
@@ -701,7 +419,10 @@ print(livro_1.autor)
 print(livro_1.titulo)
 print(livro_1.emprestado)
 livro_1.emprestar()
--------------------------------------------------------------------------------------------------------
+
+
+
+#-------------------------------------------------------------------------------------------------------
 #Leitura e escrita de arquivos
 #
 # Abrir  arquivo=open('exemplo.txt', 'r') o random aponta para um objeto, modo leitura
@@ -732,7 +453,10 @@ arquivo.close()
 #
 #          arquivo = open('exemplo.txt',''a') vai pegar um arquivo que já exite e escrever nele,
 #          arquivo.write("Escrevendo.\n")
------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+#-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #Banco de dados-CRUD
 #banco de dados uma coleçao de dados organizados, b. relacional em tambelas
 #CRUD é um acronimo para CREAD, READ, UPDATE, DELETE
@@ -742,7 +466,9 @@ arquivo.close()
 # DELETE para deletar
 
 #SqLite, da pra usar no python, import
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+#----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 class Livro():
     def __init__(self, titulo, autor):
         self.titulo = titulo
@@ -756,7 +482,9 @@ livro_2 = Livro("UM campo de choro", "Theus")
 
 livro_1.infor()
 livro_2.infor()
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 class ContaBancaria():
     def __init__(self, valor_inicial):
       self.saldo = valor_inicial
@@ -780,7 +508,9 @@ conta1 = ContaBancaria(1000)
 conta1.deposita(500)
 conta1.sacar(300)
 conta1.verificar_saldo()
------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+#-----------------------------------------------------------------------------------------------------------------------------------------------------
 #Strings: sequência de caracteres que podem incluir letras, números, epaços e simbolos. São imutáveis, ordenadas e indexáveis.
 #frase = "python é incrivel"
 #print( frase* 3 )#vai imprimir 3 x a frase
@@ -817,7 +547,9 @@ print(frase.upper())
 #replace() substitui caracteres
 frase = "python é incrivel"
 print(frase.replace(" ","---"))# substitui espaço vazio por ---
-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------
 #Bem, se vc não colocar a droga da função int() vai dá erro *
 #Exercicio:
 valor1 = input("Digite o 1º valor ")
@@ -830,7 +562,9 @@ print(valor1 + valor2)
 print(valor1 - valor2)
 print(valor1 * valor2)
 print(valor1 % valor2)
-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------
 #Esse programa vai calcular o preço total de uma compra. Vai solicitar ao usuario o valor de cada item e vai calcular + impostos
 #Exercicio
 total = 0
@@ -844,7 +578,9 @@ while True:
 
 total = total*imposto + total
 print("O valor do item é: ", total)
--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+#-------------------------------------------------------------------------------------------------------------------------------------------------------
 #listas python: são coleção de itens que podem ser de diferentes tipos, criadas por [ e, separadas, por ,]
 #usadas para armazenamentos de dados
 
@@ -870,7 +606,9 @@ print(lista_frutas)
 lista_frutas2 = ["goiaba","tomate","caju"]
 lista_frutas2.append("kiwi")
 print(lista_frutas2)
--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #O programa vai solicitar ao usuario que adivinhe um número entre 1 e 50, o programa vai dizer ao usuario se o número é maior ou menor e solicitar novas tentativas ate acertar
 #Exercicio
 
@@ -884,7 +622,9 @@ while True:# esse comando vai deixar o programa rodando infinitamente
           print("o numero digitado é menor que o que voçe digitou, tente novamente: ")
       else:
           print("o numero digitado é maior que o que voçe digitou, tente novamente: ")
-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------
 #programa contagem regressiva de 0 a dez com o comando while
 #Exercicio
 contador = 0
@@ -897,7 +637,9 @@ numero_total = 10
 while(numero_total >=0):
     print(numero_total)
     numero_total = numero_total -1
----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+#---------------------------------------------------------------------------------------------------------------------------------------------------------
 #Desvio condicional
 #exercicio fila prioritaria
 x = 23
@@ -916,7 +658,7 @@ if idade < 3 or idade > 60:
 else:
    print("fila regular")
 -----------------------------------------------------------------------------------------------------------------------------------------------------
-#-------------------------- do meu jeito
+#do meu jeito
 
 x = input("Digite uma idade ")
 
@@ -944,7 +686,10 @@ if (idade > 16) and(idade < 59) and(peso > 50) and(quantidade_de_horas_dormidas_
           print("paciente pode doar sangue")
 else:
           print("não pode doar sangue")
-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+#----------------------------------------------------------------------------------------------------------------------------------------------------------------
 #funçoes do print
 
 print("unica linha")
@@ -979,7 +724,10 @@ nome = 'páulo'
 idade = 23
 
 print(f"nome:\t{nome}\tidade:\t{idade}")
----------------------------------------------------------------------------------------------------------------------------------
+
+
+
+#---------------------------------------------------------------------------------------------------------------------------------
 # Importando as bibliotecas necessárias
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
@@ -1069,8 +817,9 @@ print("Fim")
 """comentario
 em bloco aspas"""
 
-#--------------------------------------------------------------------------------------------------------------------#
 
+
+#--------------------------------------------------------------------------------------------------------------------#
 #indentação : em python é feita pela quantidade de espaços, ele endende que * esta dento do bloco if e else
 #x = -23
 #if x > 0:
@@ -1079,7 +828,8 @@ em bloco aspas"""
 #else:
  # print("x é negativo")  *
 
- #-------------------------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------------------------
 # a variavel str tranforma algum numero em texto.
 # a função "input" serve para ler um dado fornnecido pelo usuario uma caixinha aparece.
 #--------------------------------------------------------------------------------------------------------------------#
@@ -1090,8 +840,9 @@ em bloco aspas"""
 #float -numeros de ponto flutuantes, os positivos e os negativos, bem como os que possuem casas decimais -3,3.3,-2,4,7,..1.
 
 #complex - numeros complexos 1 + 2j
-#--------------------------------------------------------------------------------------------------------------------#
 
+
+#-------------------------------------------------------------------------------------------------------------------------------#
 #VARIAVEIS#
 #o python difere as mesmas variaveis escritas de forma diferente, mauiscula minuscula = altura, Altura, ALTURA
 #de A-Z, 0-9
@@ -1121,6 +872,7 @@ x = m + j
 print(x)
 #x = w + m # não vai, pois o python não junta um nome com um numero int. por ser uma linguagem com uma tipagem dinamica]
 
+
 #--------------------------------------------------------------------------------------------------------------------#
 ##metodos estrings## strings = texto
 
@@ -1142,6 +894,7 @@ d = " mundo"
 l = j+d #l = j + "" + d  , assim tambem vai
 print(l)
 
+
 #--------------------------------------------------------------------------------------------------------------------#
 #Type(descobrir o tipo de dados armazenados na variavel )
 i = "ola mundo"
@@ -1153,6 +906,7 @@ print(type(i))
 print(type(o))
 print(type(y))
 print(type(s))
+
 
 #--------------------------------------------------------------------------------------------------------------------#
 #CASTING# converte tipos de dados numericos e de textos para outros dados numericos e de textos
@@ -1183,6 +937,8 @@ n =  str (2.3)
 print("a vriavel p e do tipo:",type(p))
 print("a vriavel r e do tipo:",type(r))
 print("a vriavel n e do tipo:",type(n))
+
+
 #--------------------------------------------------------------------------------------------------------------------#
 #função ABS: vai retonar um número absoluto;
 print(abs(-15))
@@ -1212,6 +968,8 @@ print(pow(3,3))
 #print(math.floor()): arredondamento para baixo;
 #print(math.ceil()): arredondamento para cima;
 #print(math.sqrt()): função de raiz
+
+
 #--------------------------------------------------------------------------------------------------------------------#
 #Manipulação de Variáveis
 # Operações Matemáticas, Operações Matemáticas e Aritméticas:
@@ -1229,7 +987,10 @@ print("Multiplicação:", multiplicacao)
 print("Divisão:", divisao)
 print("Resto:", resto)
 print("Potência:", potencia)
-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------
 #Tuplas, dicionários e sets
 dias_da_semana = ("segunda","terça","quarta")
 print(type(dias_da_semana))
@@ -1253,7 +1014,10 @@ print(pessoa.values())
 #são frequentementes utilizados para remover duplicatas de uma lista ou para fazer operações matemáticas como união ou interseção
 conjunto= {"branco","roxo","preto"}
 print(type(conjunto))
---------------------------------------------------------------------------------------------------------
+
+
+
+#-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 """exemplo básico de uma arquitetura de rede neural profunda em Python usando a biblioteca TensorFlow, uma das mais populares para desenvolvimento de redes neurais. Este exemplo demonstrará uma rede neural simples com uma camada de entrada, uma camada oculta e uma camada de saída, utilizando o framework Keras, que é uma API de alto nível integrada ao TensorFlow.
 Vamos criar uma rede neural para classificar imagens da base de dados MNIST, que consiste em dígitos escritos à mão.
 Este código cria e treina uma rede neural simples para classificação de dígitos manuscritos do conjunto de dados MNIST. A rede tem uma camada de entrada que achatada as imagens 28x28 em um vetor unidimensional, uma camada oculta com 128 neurônios e ativação ReLU, e uma camada de saída com 10 neurônios (um para cada dígito) e ativação softmax. O modelo é treinado por 10 épocas usando o otimizador Adam e a função de perda entropia cruzada categórica esparsa. Finalmente, a acurácia do modelo é avaliada com os dados de teste e um gráfico da acurácia ao longo das épocas é plotado.
@@ -1297,7 +1061,9 @@ plt.ylim([0, 1])
 plt.legend(loc='lower right')
 plt.show()
 
----------------------------------------------------------------------------------------------------------------------------------
+
+
+#---------------------------------------------------------------------------------------------------------------------------------
 O conjunto de dados Iris é um clássico na aprendizagem de máquina e consiste em três classes de flores Iris (Setosa, Versicolour e Virginica), 
 com quatro características (comprimento e largura das sépalas e pétalas).
 O conjunto de dados Iris é um dos mais famosos e utilizados na área de aprendizado de máquina. Criado por Ronald Fisher em 1936, ele contém 150 amostras de flores de três espécies de Iris (Iris setosa, Iris virginica e Iris versicolor). Cada amostra é descrita por quatro atributos: comprimento e largura das sépalas e das pétalas.
@@ -1353,10 +1119,6 @@ Ele cobre os passos essenciais desde a importação das bibliotecas, carregament
 Este é um ponto de partida útil para explorar técnicas mais avançadas de machine learning usando scikit-learn.
 
 
-
-
-
-
 # Importar bibliotecas necessárias
 from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
@@ -1388,7 +1150,9 @@ print(f"Acurácia do modelo: {accuracy * 100:.2f}%")
 print("Relatório de Classificação:")
 print(report)
 
-________________________________________________________________________________________
+
+
+#---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 O Random Forest é um poderoso algoritmo de aprendizado de máquina baseado no conceito de ensemble learning, que combina múltiplos modelos para melhorar a precisão e a robustez da previsão. Ele é amplamente utilizado tanto para problemas de classificação quanto de regressão.
 
 Conceitos Fundamentais do Random Forest
@@ -1454,496 +1218,13 @@ print(f"Acurácia do modelo: {accuracy * 100:.2f}%")
 print("Relatório de Classificação:")
 print(report)
 
---------------------------------------------------------------------------------------------------------------------------
-""" versão do Jogo da cobrinha 
-1. Estrutura Geral do Código
-O código está dividido em três partes principais:
 
-HTML: Define a estrutura da página e cria o elemento <canvas> onde o jogo será renderizado.
-CSS: Responsável pela estilização da página e do canvas (área do jogo).
-JavaScript: Contém a lógica do jogo, incluindo movimentação da cobrinha, geração da comida, detecção de colisões e a atualização/representação gráfica do jogo.
-2. HTML
-html
-Copiar
-Editar
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Jogo da Cobrinha</title>
-  <style>
-    /* Estilos em CSS (explicados na seção de CSS) */
-    body {
-      background-color: #f0f0f0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-    }
-    canvas {
-      background-color: #000;
-      display: block;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    }
-  </style>
-</head>
-<body>
-  <!-- Elemento canvas onde o jogo é desenhado -->
-  <canvas id="game" width="400" height="400"></canvas>
 
-  <script>
-    // Código JavaScript (detalhado a seguir)
-  </script>
-</body>
-</html>
-O que cada parte faz:
-<!DOCTYPE html>: Informa ao navegador que estamos utilizando HTML5.
-<html lang="pt-BR">: Define que o idioma da página é o português do Brasil.
-<head>: Contém metadados, o título da página e o bloco de estilos (CSS).
-<body>: Inclui o <canvas> (área do jogo) e o bloco <script> com a lógica em JavaScript.
-3. CSS
-Dentro da tag <style>, temos os seguintes estilos:
-
-css
-Copiar
-Editar
-body {
-  background-color: #f0f0f0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-}
-canvas {
-  background-color: #000;
-  display: block;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
-Explicação dos estilos:
-body:
-
-background-color: #f0f0f0; – Define um fundo cinza claro para a página.
-display: flex; justify-content: center; align-items: center; – Utiliza Flexbox para centralizar o conteúdo (o canvas) tanto na horizontal quanto na vertical.
-height: 100vh; – Faz com que o corpo ocupe 100% da altura da viewport.
-margin: 0; – Remove margens padrão para garantir o alinhamento correto.
-canvas:
-
-background-color: #000; – Define o fundo preto para a área do jogo.
-display: block; – Garante que o canvas seja exibido como um bloco.
-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); – Adiciona uma sombra ao redor do canvas para destacá-lo visualmente.
-4. JavaScript
-Todo o comportamento do jogo está implementado dentro do <script>. Vamos analisar cada parte:
-
-a) Seleção do Canvas e Contexto de Desenho
-javascript
-Copiar
-Editar
-const canvas = document.getElementById('game');
-const ctx = canvas.getContext('2d');
-canvas: Seleciona o elemento <canvas> pelo seu id ("game").
-ctx: Obtém o contexto 2D do canvas, que é utilizado para desenhar formas, retângulos e controlar a renderização do jogo.
-b) Variáveis e Configurações Iniciais
-javascript
-Copiar
-Editar
-const gridSize = 20;
-const tileCount = canvas.width / gridSize;
-
-let snake = [{ x: 10, y: 10 }]; // A cobrinha começa com a cabeça na posição (10, 10)
-let snakeLength = 3;            // Tamanho inicial da cobrinha (3 segmentos)
-let dx = 0;                     // Movimento horizontal (inicialmente parado)
-let dy = 0;                     // Movimento vertical (inicialmente parado)
-let food = { x: 5, y: 5 };       // Posição inicial da comida
-gridSize: Define o tamanho de cada célula (ou “tile”) da grade em 20 pixels.
-tileCount: Calcula quantas células cabem na largura (ou altura) do canvas. Com um canvas de 400 pixels, teremos 20 células (400/20).
-snake: Um array que representa os segmentos da cobrinha. Inicialmente, a cobrinha possui apenas a cabeça na posição (10, 10).
-snakeLength: Define quantos segmentos a cobrinha terá. Conforme ela come a comida, esse valor é incrementado.
-dx e dy: Determinam a direção do movimento da cobrinha. Começam com 0, ou seja, a cobrinha está parada.
-food: Representa a posição da comida na grade.
-c) Função para Gerar Nova Comida
-javascript
-Copiar
-Editar
-function newFood() {
-  food.x = Math.floor(Math.random() * tileCount);
-  food.y = Math.floor(Math.random() * tileCount);
-}
-Objetivo: Gera uma nova posição aleatória para a comida.
-Como funciona:
-Math.random() * tileCount gera um número aleatório entre 0 e tileCount.
-Math.floor() arredonda esse número para baixo, garantindo que a posição seja um número inteiro dentro dos limites da grade.
-d) Função de Atualização do Jogo (update)
-javascript
-Copiar
-Editar
-function update() {
-  // Calcula a nova posição da cabeça com base na direção atual
-  const head = { x: snake[0].x + dx, y: snake[0].y + dy };
-
-  // Verifica colisão com as paredes
-  if (head.x < 0 || head.x >= tileCount || head.y < 0 || head.y >= tileCount) {
-    resetGame();
-    return;
-  }
-
-  // Verifica colisão com o próprio corpo
-  for (let segment of snake) {
-    if (head.x === segment.x && head.y === segment.y) {
-      resetGame();
-      return;
-    }
-  }
-
-  // Adiciona a nova cabeça no início do array da cobrinha
-  snake.unshift(head);
-
-  // Verifica se a cobrinha comeu a comida
-  if (head.x === food.x && head.y === food.y) {
-    snakeLength++;
-    newFood();
-  }
-
-  // Remove o último segmento se a cobrinha tiver mais segmentos do que o tamanho permitido
-  while (snake.length > snakeLength) {
-    snake.pop();
-  }
-}
-Explicação detalhada:
-Movimento da Cabeça:
-
-Calcula a nova posição da cabeça somando os valores de dx e dy à posição atual.
-Colisão com as Paredes:
-
-Se a nova posição da cabeça estiver fora dos limites da grade (menos que 0 ou maior/igual a tileCount), significa que a cobrinha colidiu com a parede. Nesse caso, o jogo é reiniciado pela função resetGame().
-Colisão com o Próprio Corpo:
-
-Percorre todos os segmentos da cobrinha e, se a nova posição da cabeça coincidir com qualquer segmento, isso indica uma colisão consigo mesma. O jogo é reiniciado.
-Atualização da Cobrinha:
-
-Se não houve colisões, adiciona a nova posição da cabeça no início do array snake usando unshift().
-Verificação de Consumo da Comida:
-
-Se a posição da cabeça for a mesma da comida, a cobrinha cresce (incrementa snakeLength) e uma nova posição para a comida é gerada.
-Manutenção do Tamanho:
-
-Se o número de segmentos da cobrinha exceder snakeLength, os segmentos excedentes são removidos com pop(), mantendo o tamanho correto.
-e) Função de Desenho do Jogo (draw)
-javascript
-Copiar
-Editar
-function draw() {
-  // Limpa o canvas preenchendo-o com a cor preta
-  ctx.fillStyle = '#000';
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-  // Desenha a comida (em vermelho)
-  ctx.fillStyle = '#ff0000';
-  ctx.fillRect(food.x * gridSize, food.y * gridSize, gridSize - 2, gridSize - 2);
-
-  // Desenha cada segmento da cobrinha (em verde)
-  ctx.fillStyle = '#00ff00';
-  for (let segment of snake) {
-    ctx.fillRect(segment.x * gridSize, segment.y * gridSize, gridSize - 2, gridSize - 2);
-  }
-}
-Pontos importantes:
-Limpeza do Canvas:
-
-Antes de desenhar a nova posição da cobrinha e da comida, o canvas é limpo preenchendo-o com um retângulo preto que cobre toda a área.
-Desenho da Comida:
-
-A comida é desenhada em vermelho. As coordenadas da comida (definidas na grade) são convertidas para pixels multiplicando pelo gridSize.
-Desenho da Cobrinha:
-
-Cada segmento da cobrinha é desenhado em verde. O laço for percorre o array snake e desenha um retângulo para cada segmento.
-O uso de gridSize - 2 deixa um pequeno espaço entre as células, criando um efeito visual agradável.
-f) Função para Reiniciar o Jogo (resetGame)
-javascript
-Copiar
-Editar
-function resetGame() {
-  snake = [{ x: 10, y: 10 }];
-  snakeLength = 3;
-  dx = 0;
-  dy = 0;
-  newFood();
-}
-Objetivo: Quando ocorre uma colisão (com a parede ou com o próprio corpo), o jogo é reiniciado.
-O que faz:
-Reseta a posição da cobrinha para a posição inicial.
-Restaura o tamanho da cobrinha para 3 segmentos.
-Zera a direção do movimento (dx e dy).
-Gera uma nova posição para a comida.
-g) Loop Principal do Jogo (gameLoop)
-javascript
-Copiar
-Editar
-function gameLoop() {
-  update();
-  draw();
-  // Chama novamente o gameLoop após 100ms, controlando a velocidade do jogo
-  setTimeout(gameLoop, 100);
-}
-Objetivo: Manter o jogo em execução contínua.
-Como funciona:
-Em cada iteração, a função update() atualiza a lógica (movimento, colisões, consumo da comida) e draw() redesenha o canvas.
-setTimeout chama novamente gameLoop após 100 milissegundos, definindo a velocidade do jogo.
-h) Captura de Eventos do Teclado
-javascript
-Copiar
-Editar
-document.addEventListener('keydown', function(e) {
-  switch(e.key) {
-    case 'ArrowUp':
-      if (dy === 1) break; // Impede movimento oposto (se estiver descendo, não pode subir imediatamente)
-      dx = 0;
-      dy = -1;
-      break;
-    case 'ArrowDown':
-      if (dy === -1) break;
-      dx = 0;
-      dy = 1;
-      break;
-    case 'ArrowLeft':
-      if (dx === 1) break;
-      dx = -1;
-      dy = 0;
-      break;
-    case 'ArrowRight':
-      if (dx === -1) break;
-      dx = 1;
-      dy = 0;
-      break;
-  }
-});
-Objetivo: Permitir que o jogador controle a direção da cobrinha.
-Como funciona:
-Um event listener é adicionado para o evento keydown. Cada vez que uma tecla é pressionada, a função anônima verifica qual tecla foi.
-Se uma das setas (ArrowUp, ArrowDown, ArrowLeft, ArrowRight) for pressionada, os valores de dx e dy são atualizados para mudar a direção do movimento.
-Há uma verificação para evitar que a cobrinha se mova na direção oposta instantaneamente (por exemplo, de para baixo para para cima), o que poderia causar uma colisão imediata.
-i) Inicialização do Jogo
-javascript
-Copiar
-Editar
-newFood();
-gameLoop();
-Objetivo: Configurar e iniciar o jogo.
-Como funciona:
-A função newFood() é chamada para definir a posição inicial da comida.
-Em seguida, gameLoop() inicia o loop principal do jogo, fazendo com que a lógica e o desenho sejam atualizados periodicamente.
-Conclusão
-Esse código cria um jogo simples da cobrinha onde:
-
-O HTML define a estrutura da página e o canvas para o jogo.
-O CSS cuida da apresentação, centralizando o canvas e definindo suas cores e efeitos.
-O JavaScript implementa toda a lógica do jogo: desde a movimentação da cobrinha, detecção de colisões e consumo da comida, até o redesenho contínuo do canvas.
-Você pode expandir esse código adicionando novas funcionalidades, ajustando a velocidade do jogo, ou modificando a aparência dos elementos. Esse exemplo serve como uma ótima base para entender como integrar HTML, CSS e JavaScript na criação de jogos simples para a web.
+#--------------------------------------------------------------------------------------------------------------------------
 
 
 
-##jogo da cobrinha
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Jogo da Cobrinha</title>
-  <style>
-    /* Estilização básica para centralizar o canvas na página */
-    body {
-      background-color: #f0f0f0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-    }
-    canvas {
-      background-color: #000;
-      display: block;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    }
-  </style>
-</head>
-<body>
-  <!-- Canvas onde o jogo será desenhado -->
-  <canvas id="game" width="400" height="400"></canvas>
-
-  <script>
-    // Seleciona o canvas e define o contexto 2D para desenhar
-    const canvas = document.getElementById('game');
-    const ctx = canvas.getContext('2d');
-
-    // Tamanho da grade e número de células
-    const gridSize = 20;
-    const tileCount = canvas.width / gridSize;
-
-    // Estado inicial da cobrinha e da comida
-    let snake = [{ x: 10, y: 10 }]; // posição inicial da cabeça
-    let snakeLength = 3;            // tamanho inicial da cobrinha
-    let dx = 0;                     // velocidade na direção x
-    let dy = 0;                     // velocidade na direção y
-    let food = { x: 5, y: 5 };       // posição inicial da comida
-
-    // Função para gerar uma nova posição para a comida aleatoriamente
-    function newFood() {
-      food.x = Math.floor(Math.random() * tileCount);
-      food.y = Math.floor(Math.random() * tileCount);
-    }
-
-    // Função que atualiza o estado do jogo (posição da cobrinha, verificação de colisões, etc.)
-    function update() {
-      // Calcula a nova posição da cabeça com base na direção atual
-      const head = { x: snake[0].x + dx, y: snake[0].y + dy };
-
-      // Verifica colisão com as paredes (se a cabeça sair do canvas, o jogo é reiniciado)
-      if (head.x < 0 || head.x >= tileCount || head.y < 0 || head.y >= tileCount) {
-        resetGame();
-        return;
-      }
-
-      // Verifica colisão com o próprio corpo
-      for (let segment of snake) {
-        if (head.x === segment.x && head.y === segment.y) {
-          resetGame();
-          return;
-        }
-      }
-
-      // Adiciona a nova cabeça no início do array da cobrinha
-      snake.unshift(head);
-
-      // Verifica se a cobrinha comeu a comida
-      if (head.x === food.x && head.y === food.y) {
-        snakeLength++;
-        newFood();
-      }
-
-      // Remove o último segmento se a cobrinha estiver maior que o tamanho permitido
-      while (snake.length > snakeLength) {
-        snake.pop();
-      }
-    }
-
-    // Função que desenha o jogo: a cobrinha e a comida
-    function draw() {
-      // Limpa o canvas
-      ctx.fillStyle = '#000';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      // Desenha a comida (em vermelho)
-      ctx.fillStyle = '#ff0000';
-      ctx.fillRect(food.x * gridSize, food.y * gridSize, gridSize - 2, gridSize - 2);
-
-      // Desenha cada segmento da cobrinha (em verde)
-      ctx.fillStyle = '#00ff00';
-      for (let segment of snake) {
-        ctx.fillRect(segment.x * gridSize, segment.y * gridSize, gridSize - 2, gridSize - 2);
-      }
-    }
-
-    // Função que reinicia o jogo em caso de colisão
-    function resetGame() {
-      snake = [{ x: 10, y: 10 }];
-      snakeLength = 3;
-      dx = 0;
-      dy = 0;
-      newFood();
-    }
-
-    // Função principal do jogo que é chamada a cada intervalo de tempo
-    function gameLoop() {
-      update();
-      draw();
-      // Chama o gameLoop novamente após 100ms (velocidade do jogo)
-      setTimeout(gameLoop, 100);
-    }
-
-    // Captura eventos de teclado para controlar a direção da cobrinha
-    document.addEventListener('keydown', function(e) {
-      switch(e.key) {
-        case 'ArrowUp':
-          if (dy === 1) break; // Impede movimento inverso
-          dx = 0;
-          dy = -1;
-          break;
-        case 'ArrowDown':
-          if (dy === -1) break;
-          dx = 0;
-          dy = 1;
-          break;
-        case 'ArrowLeft':
-          if (dx === 1) break;
-          dx = -1;
-          dy = 0;
-          break;
-        case 'ArrowRight':
-          if (dx === -1) break;
-          dx = 1;
-          dy = 0;
-          break;
-      }
-    });
-
-    // Inicia o jogo
-    newFood();
-    gameLoop();
-  </script>
-</body>
-</html>
-
------------------------------------------------------------------------------------------------------------
-#testando Datas setes
-
-import pandas as pd
-import seaborn as sns
-import matplotlib.pyplot as plt
-
-iris=sns.load_dataset("iris")#data sete de flores bom para testes
-print(iris)
-
-iris[iris["species"]=="virginica"]
-
-iris.groupby("species").mean()
-
-iris.head()
-
-sns.histplot(data=iris, x="sepal_length")#vai gerafico de frequências dos valores continuos, como estão distribuidos
-
-for col in iris.drop(columns="species"):
-  sns.histplot(data=iris, x=col, hue="species")
-  plt.show()
-
-sns.pairplot(data=iris, hue="species")
-plt.show()
-
-"""""""""""""""""""
-import numpy as np
-import matplotlib.pyplot as plt
-
-fig= plt.figure(figsize= (8, 5))
-plt.title("função linear")
-
-x = np.linspace(-10, 10, 1000)
-y = 5 + 2*x  # aqui vc altera a função
-
-plt.plot(x, y)
-plt.show()
-
-
-fig= plt.figure(figsize= (8, 5))
-plt.title("função de segundo grau")# calcular a gravidade de um objeto caindo, a maça de newtton
-
-x = np.linspace(0, 5, 1000)#tempo
-y = 5 - 5*x**2 # aqui vc altera a função
-
-plt.plot(x, y)
-plt.show()
-
-------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------
 #Teorema de Pitagoras
 #c2 = a2 + b2 # a hipotenusa é o lado mais longo
 
@@ -1963,4 +1244,8 @@ def area_of_triangle(a, b, c):
 
 
 print(area_of_triangle(1., 1., 2. ** .5))
+
+
+
+#---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 

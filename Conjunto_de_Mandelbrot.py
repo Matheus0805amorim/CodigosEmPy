@@ -1,0 +1,74 @@
+# Conjunto de Mandelbrot em Python
+
+Este projeto implementa um gerador do Conjunto de Mandelbrot utilizando Python, com as bibliotecas NumPy e Matplotlib. 
+O objetivo é demonstrar como uma fórmula simples pode gerar padrões complexos e visualmente interessantes, característicos dos fractais.
+O Conjunto de Mandelbrot é um dos conceitos mais fascinantes da matemática, especialmente na área dos números complexos e da geometria fractal. 
+Ele é formado a partir de uma fórmula relativamente simples: \( z_{n+1} = z_n^2 + c \), em que \( z \) e \( c \) são números complexos e \( z_0 \) é igual a zero. 
+O objetivo é analisar o comportamento da sequência gerada por essa equação, variando o valor de \( c \). Se essa sequência permanecer limitada, ou seja, não tender ao infinito mesmo após muitas iterações, o valor de \( c \) pertence ao Conjunto de Mandelbrot. 
+Caso contrário, ele é excluído do conjunto. O resultado gráfico desse processo é uma imagem complexa e altamente detalhada, com uma estrutura que se repete em diferentes escalas, característica dos fractais. 
+Essa figura não só é esteticamente impressionante, mas também revela propriedades matemáticas profundas sobre estabilidade e caos, sendo amplamente estudada em áreas como sistemas dinâmicos, computação gráfica e teoria do caos.
+
+O Conjunto de Mandelbrot é definido pela iteração da fórmula:
+\[
+z_{n+1} = z_n^2 + c, \quad \text{com } z_0 = 0,
+\]
+onde **c** é um número complexo. Um ponto \( c \) pertence ao conjunto se, após repetidas iterações, a sequência \(\{z_n\}\) permanecer limitada (não divergir para o infinito). 
+O código gera uma grade de números complexos e, para cada ponto, aplica a iteração para determinar se ele diverge ou não, colorindo-o de acordo com o número de iterações necessárias para atingir um critério de divergência (quando \(|z| > 2\)).
+
+## Pré-requisitos
+
+- Python 3.x
+- Bibliotecas:
+  - [NumPy](https://numpy.org/)
+  - [Matplotlib](https://matplotlib.org/)
+
+Para instalar as bibliotecas necessárias, execute:
+
+```bash
+pip install numpy matplotlib
+
+
+
+
+
+
+
+
+
+
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Parâmetros da imagem
+largura, altura = 800, 800
+x_min, x_max = -2.0, 1.0
+y_min, y_max = -1.5, 1.5
+max_iter = 100  # Número máximo de iterações
+
+# Criação da grade de números complexos
+x = np.linspace(x_min, x_max, largura)
+y = np.linspace(y_min, y_max, altura)
+X, Y = np.meshgrid(x, y)
+C = X + 1j * Y
+
+# Inicialização de Z e da matriz que armazena o número de iterações
+Z = np.zeros_like(C)
+mandelbrot = np.zeros(C.shape, dtype=int)
+
+# Iteração para determinar se cada ponto converge ou diverge
+for n in range(max_iter):
+    # Máscara para pontos onde a magnitude de Z é menor ou igual a 2
+    mask = np.abs(Z) <= 2
+    # Atualiza Z apenas onde ainda não divergiu
+    Z[mask] = Z[mask] ** 2 + C[mask]
+    # Registra o número de iterações quando Z passa a divergir
+    mandelbrot[mask & (np.abs(Z) > 2)] = n
+
+# Plotando o conjunto de Mandelbrot
+plt.figure(figsize=(8, 8))
+plt.imshow(mandelbrot, extent=(x_min, x_max, y_min, y_max), cmap='hot')
+plt.xlabel('Parte Real')
+plt.ylabel('Parte Imaginária')
+plt.title('Conjunto de Mandelbrot')
+plt.show()
