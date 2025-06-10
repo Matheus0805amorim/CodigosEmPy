@@ -21,31 +21,7 @@ Aqui você encontrará:
 
 ---
 
-## 🚀 Como Utilizar
 
-1️⃣ Clone o repositório:
-```bash
-https://github.com/Matheus0805amorim/CodigosEmPy.git
-```
-
-2️⃣ Acesse a pasta do repositório:
-```bash
-cd seu-repositorio
-```
-
-3️⃣ (Opcional) Crie um ambiente virtual:
-```bash
-python -m venv venv
-source venv/bin/activate  # Linux/macOS
-venv\Scripts\activate  # Windows
-```
-
-4️⃣ Instale as dependências, se houver:
-```bash
-pip install -r requirements.txt
-```
-
-5️⃣ Explore os arquivos e rode os scripts conforme necessário.
 
 ---
 
@@ -55,9 +31,6 @@ Este repositório é voltado para estudos pessoais, mas sinta-se à vontade para
 
 ---
 
-## 📜 Licença
-
-Este repositório está sob a **licença MIT**. Consulte o arquivo `LICENSE` para mais informações.
 
 📌 *Happy Coding!* 😃
 
