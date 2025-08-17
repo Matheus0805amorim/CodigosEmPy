@@ -57,6 +57,17 @@ Se a implementação é fácil de explicar, pode ser uma boa idéia.
 Namespaces são uma grande idéia -- vamos fazer mais dessas!
 
 
+#--------------------------------------------------------------------------------------------------------------------
+Encapsulamento
+
+
+Encapsulamento é a ideia de esconder dados e detalhes de implementação, expondo apenas uma interface clara — isso protege invariantes, facilita manutenção e reduz acoplamento —, mas a forma concreta varia muito entre linguagens e paradigmas. Em linguagens orientadas a objeto clássicas (Java, C#, C++) existe controle de acesso explícito: `private`/`protected`/`public` (C++ tem ainda `friend`), e o padrão é colocar campos privados e métodos públicos (getters/setters) para controlar leitura/escrita. Em linguagens de script dinâmicas como Python ou JavaScript, o encapsulamento é mais por convenção e mecanismos menos rígidos: Python usa `_nome` (convenção) e `__nome` (name-mangling) mas não tem “private” forte; JavaScript moderno tem campos privados reais com `#campo` e módulos ES (arquivo) criam escopo privado; closures (funções que capturam variáveis) são uma técnica muito usada em JS e em linguagens funcionais para manter estado privado.
+
+Em linguagens procedurais como C o encapsulamento é feito por limites de compilação: funções e variáveis `static` num arquivo têm visibilidade de tradução unitária; um padrão comum é “opaque pointer” (declaração incompleta da `struct` no header) para esconder a implementação do struct e expor só funções que operam sobre ele. Em linguagens com sistema de módulos/pacotes (Go, Rust, Haskell, OCaml, Swift) o encapsulamento normalmente é controlado no nível do módulo/pacote: Go exporta identificadores que começam com letra maiúscula; Rust usa `pub`/privado por módulo; Swift tem `private/fileprivate/internal/public/open`. Em Ruby os atributos de instância são sempre privados e o idioma usa `private`/`protected` para métodos; em PHP há `public`/`protected`/`private` em classes.
+
+O resultado prático é: se a linguagem tem modificadores de acesso, use-os para proteger invariantes; se não, use módulos/arquivos e closures para esconder detalhes; em C use headers com structs opacas; em linguagens funcionais use assinaturas de módulo (signatures) para expor só o que precisa. Cada abordagem tem trade-offs: proteção forte (Java/Rust) evita acidentes mas impõe mais boilerplate; convenções/closures (Python/JS) são mais flexíveis mas exigem disciplina da equipe. Se quiser, eu descrevo exemplos práticos curtos (em Java, C com struct opaca, JS closure e Rust) em um parágrafo cada para ver exatamente como implementar em cada linguagem. Qual(is) linguagem(ns) você quer ver exemplos?
+
+
 
 #--------------------------------------------------------------------------------------------------------------------
 ### Declarando uma variável bool
